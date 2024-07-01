@@ -1,4 +1,4 @@
-# frontend 강좌
+# Frontend 강좌
 - HTML5
 - CSS3
 - JavaScript
