@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>입력 Form</title>
+  <style>
+    label input {padding: 5px;}
+  </style>
+</head>
+<body style="margin: 40px;">
+  <form action="#" method="post"><!--action으로 보내는 경로를 선택/method는 데이터를 보내는 방식으로 get, post 등의 방식이 있다-->
+
+    <label for="uname">User name</label><br>
+    <input type="text" name="uname" id="uname"><br><br>
+    <label for="pwd">Password</label><br>
+    <input type="password" name="pwd" id="pwd"><br><br>
+    <label for="tel">Phone Number</label><br>
+    <input type="tel" id="tel"><br><br>
+    <label for="email">E-mail</label><br>
+    <input type="email" id="email"><br><br>
+
+    <input type="radio" id="html" name="fav_language" value="HTML"><!--선택항목이며, 택1만 가능하도록 해주는 코드-->
+    <label for="html">HTML</label><br>
+    <input type="radio" id="css" name="fav_language" value="CSS">
+    <label for="css">CSS</label><br>
+    <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+    <label for="javascript">JavaScript</label><br><br>
+
+    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"><!--다중항목 선택의 경우는 체크박스를 사용-->
+    <label for="vehicle1"> I have a bike</label><br>
+    <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+    <label for="vehicle2"> I have a car</label><br>
+    <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+    <label for="vehicle3"> I have a boat</label><br><br>
+
+    <label for="friut">과일</label>
+    <select name="friut" id="friut">
+      <option value="apple">사과</option>
+      <option value="watermelon">수박</option>
+      <option value="strawberry">딸기</option>
+    </select><br><br>
+
+    <label for="intro">자기소개</label><br>
+    <textarea name="intro" id="intro" rows="10" cols="60"></textarea><br><br>
+  
+    <input type="submit" value="제출">
+    <input type="reset" value="취소">
+    <!-- reset : 입력한 데이터 없애기. -->
+    <!-- radio : 동일한 name에서 한가지 값만 선택할 수 있도록. -->
+
+  </form>
+</body>
+</html>

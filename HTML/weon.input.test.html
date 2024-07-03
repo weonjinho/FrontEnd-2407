@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Form</title>
+    <style>
+        table{
+            margin: auto;
+            border: none;
+        }
+        table caption{
+            font-size: x-large;
+        }
+        table tbody{
+            border: none;
+        }
+        table tbody tr td:first-child{
+            background-color:beige;
+        }
+        table tbody tr:last-child{
+            text-align: center;
+        }
+        table tbody tr:nth-child(8) td:nth-child(2) input{
+            width: 70px;
+        }
+    </style>
+    <script>
+        function check_password(){
+            var pass1 = document.getElementById("password").value;
+            var pass2 = document.getElementById("passcheck").value;
+            console.log(pass1);
+            if(pass1==pass2){
+                alert("패스워드가 일치합니다.");
+            }else{
+                alert("패스워드가 불일치합니다, 다시 입력해주헤요.");
+            }
+        }
+        function finalCheck(){
+            alert("111");
+            function show_email(){
+                var email = document.getElementsByName("email").innerText;
+                alert(email);
+            }
+            function check_tel_length(){
+                var tel1_length = document.getElementById("tel1").value.tel1;
+                alert(tel1_length)
+            }
+        }
+    </script>
+</head>
+<body>
+    <table border="1">
+        <caption>회원가입</caption>
+        <hr>
+        <tbody>
+            <form action="#" method="get">         
+            <tr>
+                <td>
+                    사용자&nbsp;ID(*)
+                </td>
+                <td>
+                    <input type="text" id="uid" name="uid" placeholder="필수 입력사항입니다." required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    패스워드(*)
+                </td>
+                <td>
+                    <input type="password" id="password" name="password" placeholder="필수 입력사항입니다." required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    패스워드 확인(*)
+                </td>
+                <td>
+                    <input type="password" id="passcheck" name="passcheck" placeholder="필수 입력사항입니다." required>
+                    <input type="button" onclick="check_password()" value="패스워드 확인">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    이름(*)
+                </td>
+                <td>
+                    <input type="text" id="uname" name="uname" placeholder="필수 입력사항입니다." required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    성별(*)
+                </td>
+                <td>
+                    <input type="radio" id="gender" name="gender" value="male" required>
+                    <label for="gender">남</label>
+                    <input type="radio" id="gender" name="gender"  value="Female" required>
+                    <label for="gender">여</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    이메일(*)
+                </td>
+                <td>
+                    <input type="email" id="email" name="email"  pattern=".+@gmail\.com" placeholder="필수 입력사항입니다." required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    휴대전화
+                </td>
+                <td>
+                    <input type="tel" id="tel1" name="tel" maxlength="3" minlength="3">&nbsp;-
+                    <input type="tel" id="tel2" name="tel" maxlength="4" minlength="4">
+                    <input type="tel" id="tel3" name="tel" maxlength="4" minlength="4">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    자기소개
+                </td>
+                <td>
+                    <textarea name="intro" id="intro"  rows="10" cols="60"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" onclick="finalCheck()" value="제출" >
+                    <input type="reset" value="취소">
+                </td>
+            </tr>
+        </form>
+        </tbody>
+    </table>
+</body>
+</html>
