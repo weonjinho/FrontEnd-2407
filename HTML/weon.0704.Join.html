@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <style>
+        table{
+            margin: auto;
+            margin-top: 50px;
+            background-color: white;
+            color: black;
+            padding: 60px;
+            width: 80%;
+        }
+        thead tr td{
+            background-color: beige;
+            padding-bottom: 50px;
+        }
+        tbody{
+            background-color: red;
+        }
+        body{
+            background-color: aquamarine;
+            padding: auto 20%;
+        }
+        #title{
+            font-size: xx-large;
+            font-weight: bold;
+        }
+        #sub_title{
+            font-weight: bold;
+        }
+
+        input{
+            width: 200px;
+            height: 30px;            
+        }
+        select{
+            width: 100px;
+            height: 36px;   
+            text-align: center;
+        }
+    </style>
+</head>
+<body >
+    <div id="background">
+        <form action="#">
+            <table border="1">
+                <!-- <caption>회원가입</caption> -->
+                 <thead>
+                    <tr>
+                        <td>
+                            <div id="title">회원가입<br></div>
+                            <div id="sub_title">회원이 되어 다양한 해택을 경험해 보세요!</div>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <label for="uid">아이디*<br></label>
+                            <input type="text" id="uid" name="uid" placeholder="아이디 입력(6~20자)">
+                            <input type="button" id="id_check_btn" name="id_check_btn" value="중복확인">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="upwd">비밀번호*<br></label>
+                            <input type="password" id="upwd" name="upwd" placeholder="비밀번호 입력 (문자,숫자,특수문자 포함 8~20자)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="check_upwd">비밀번호 확인*<br></label>
+                            <input type="password" id="check_upwd" name="check_upwd" placeholder="비밀번호 입력 (문자,숫자,특수문자 포함 8~20자)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="uname">이름*<br></label>
+                            <input type="text" id="uname" name="uname" placeholder="이름을 입력해주세요">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="uaddress">주소*<br></label>
+                            <input type="text" id="uaddress" name="uaddress" placeholder="주소를 입력해주세요"><br>
+                            <input type="text" id="u_detail_address" name="u_detail_address" placeholder="상세주소">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="utel">전화번호*<br></label>
+                            <input type="tel" id="utel" name="utel" placeholder="휴대폰 번호 입력('-'제외 11자리 입력)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="uemail">이메일 주소*<br></label>
+                            <input type="email" id="uemail" name="uemail" placeholder="이메일 주소" size="40px">@
+                            <input type="email" id="uemail" name="uemail" size="40px">
+                           <select name="email_kind" id="email_kind">
+                                <option value="gmail">.gmail.com</option>
+                                <option value="naver" selected>.naver.com</option>
+                           </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="ubirthday">생년월일*</label>
+                            <input type="text">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
