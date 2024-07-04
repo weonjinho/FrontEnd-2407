@@ -10,7 +10,7 @@
             border: none;
         }
         table caption{
-            font-size: x-large;
+            font-size: xx-large;
         }
         table tbody{
             border: none;
@@ -50,17 +50,18 @@
     </script>
 </head>
 <body>
+    <img src="./img/sheep.jpg" alt="헤더배경" width="100%">
+    <!-- <img src="https://picsum.photos/1000/120" alt="배경화면" width="100%"> -->
+    <form action="#" method="get">         
     <table border="1">
         <caption>회원가입</caption>
-        <hr>
         <tbody>
-            <form action="#" method="get">         
             <tr>
                 <td>
                     사용자&nbsp;ID(*)
                 </td>
                 <td>
-                    <input type="text" id="uid" name="uid" placeholder="필수 입력사항입니다." required>
+                    <input type="text" id="uid" name="uid" placeholder="필수 입력사항입니다." size="40px" required>
                 </td>
             </tr>
             <tr>
@@ -68,7 +69,7 @@
                     패스워드(*)
                 </td>
                 <td>
-                    <input type="password" id="password" name="password" placeholder="필수 입력사항입니다." required>
+                    <input type="password" id="password" name="password" placeholder="필수 입력사항입니다." size="40px" required>
                 </td>
             </tr>
             <tr>
@@ -76,7 +77,7 @@
                     패스워드 확인(*)
                 </td>
                 <td>
-                    <input type="password" id="passcheck" name="passcheck" placeholder="필수 입력사항입니다." required>
+                    <input type="password" id="passcheck" name="passcheck" placeholder="필수 입력사항입니다." size="40px" required>
                     <input type="button" onclick="check_password()" value="패스워드 확인">
                 </td>
             </tr>
@@ -85,7 +86,7 @@
                     이름(*)
                 </td>
                 <td>
-                    <input type="text" id="uname" name="uname" placeholder="필수 입력사항입니다." required>
+                    <input type="text" id="uname" name="uname" placeholder="필수 입력사항입니다." size="40px" required>
                 </td>
             </tr>
             <tr>
@@ -93,9 +94,9 @@
                     성별(*)
                 </td>
                 <td>
-                    <input type="radio" id="gender" name="gender" value="male" required>
+                    <input type="radio" id="gender" name="gender" value="male" size="40px" style="margin-left: 80px;" required>
                     <label for="gender">남</label>
-                    <input type="radio" id="gender" name="gender"  value="Female" required>
+                    <input type="radio" id="gender" name="gender"  value="Female" size="40px" style="margin-left: 80px;" required>
                     <label for="gender">여</label>
                 </td>
             </tr>
@@ -104,7 +105,7 @@
                     이메일(*)
                 </td>
                 <td>
-                    <input type="email" id="email" name="email"  pattern=".+@gmail\.com" placeholder="필수 입력사항입니다." required>
+                    <input type="email" id="email" name="email"  pattern=".+@gmail\.com" placeholder="필수 입력사항입니다." size="40px" required>
                 </td>
             </tr>
             <tr>
@@ -112,9 +113,7 @@
                     휴대전화
                 </td>
                 <td>
-                    <input type="tel" id="tel1" name="tel" maxlength="3" minlength="3">&nbsp;-
-                    <input type="tel" id="tel2" name="tel" maxlength="4" minlength="4">
-                    <input type="tel" id="tel3" name="tel" maxlength="4" minlength="4">
+                    <input type="tel" id="tel1" name="tel" maxlength="3" minlength="3" size="40px" placeholder="010-****-****형식으로 입력하세요.">
                 </td>
             </tr>
             <tr>
@@ -122,17 +121,17 @@
                     자기소개
                 </td>
                 <td>
-                    <textarea name="intro" id="intro"  rows="10" cols="60"></textarea>
+                    <textarea name="intro" id="intro"  rows="10" cols="42"></textarea>
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
                     <input type="submit" onclick="finalCheck()" value="제출" >
-                    <input type="reset" value="취소">
+                    <input type="reset" value="취소" style="margin-left: 10px;">
                 </td>
             </tr>
-        </form>
         </tbody>
     </table>
+</form>
 </body>
 </html>
