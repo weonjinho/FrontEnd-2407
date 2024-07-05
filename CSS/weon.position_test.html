@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 배경화면을 relative로 설정한다. */
+        .container{
+            position: relative;
+        }
+        /* 배치할 내용을 absolute로 설정한다. */
+        .topleft{
+            position: absolute;
+            /* top: 10px; */
+            bottom: 30px;
+            left: 15px;
+            font-size: 18px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>Image Text</h2>
+    <p>Add some text to an image in the top left corner;</p>
+    <div class="container">
+        <img src="https://picsum.photos/1000/300" alt="배경화면">
+        <div class="topleft">Top Left</div>
+    </div>
+</body>
+</html>

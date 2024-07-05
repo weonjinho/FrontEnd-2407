@@ -10,7 +10,7 @@
       }
       .relative {
         position: relative;
-        left: 30px;
+        left: 30px;  /*상대적으로 배치된 요소의 top,right,bottom,left속성을 설정하면 정상적인 위치에서 멀어지게 조정됩니다.*/
         border: 3px solid #73ad21;
       }
       .static {
@@ -19,6 +19,7 @@
       }
       .fixed {
         /*화면 줄여도 일정한 위치에 고정됨.*/
+        /*뷰포트에 상대적으로 배치된 요소는 페이지를 스크롤하더라도 항상 같은 위치에 유지됩니다. top,right,bottom,left 속성은 요소를 배치하는 데 사용됩니다.*/
         position: fixed;
         bottom: 0;
         right: 0;
