@@ -11,14 +11,14 @@
             background-color: white;
             color: black;
             padding: 60px;
-            width: 80%;
+            width: 40%;
+        }
+        tbody{
+            border-collapse: collapse;
         }
         thead tr td{
             background-color: beige;
             padding-bottom: 50px;
-        }
-        tbody{
-            background-color: red;
         }
         body{
             background-color: aquamarine;
@@ -41,6 +41,57 @@
             height: 36px;   
             text-align: center;
         }
+        tbody tr:nth-child(1) td input:last-child{
+            width: 100px;
+            height: 36px;
+            background-color:aqua;
+        }
+        tr td input{
+            padding-left: 10px;
+        }
+
+        tbody tr:nth-child(1) td input[type="text"]{
+            width: 72%;
+        }
+        tbody tr:nth-child(2) td input[type="password"]{    /* "비밀번호" 입력창 */
+            width: 421px;
+        }
+        tbody tr:nth-child(3) td input[type="password"]{    /* "비밀번호 왁인" 입력창 */
+            width: 421px;
+        }
+        tbody tr:nth-child(4) td input[type="text"]{    /* "이름" 입력창 */
+            width: 421px;
+        }
+        tbody tr:nth-child(5) td input{    /* "주소" 입력창 */
+            width: 421px;
+        }
+        tbody tr:nth-child(6) td input{    /* "전화번호" 입력창 */
+            width: 421px;
+        }
+        tbody tr:nth-child(7) td input{
+            width: 136.5px;
+        }
+        tbody tr:nth-child(8) td input{   
+            width: 421px;
+        }
+        tbody tr:last-child td {    
+            text-align: center;
+            width: 130px;
+        }
+        tbody tr:last-child td input{    
+            width: 100px;
+            height: 36px;
+            margin: 6px;
+        }
+        tbody tr:last-child td input:nth-child(1){    
+            background-color: deepskyblue;
+            border-radius: 8px;
+        }
+        tbody tr:last-child td input:nth-child(2){   
+            background-color: yellow;
+            border-radius: 8px;
+        }
+
     </style>
 </head>
 <body >
@@ -90,7 +141,13 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td>faf
+
+
+
+
+
+                            
                             <label for="utel">전화번호*<br></label>
                             <input type="tel" id="utel" name="utel" placeholder="휴대폰 번호 입력('-'제외 11자리 입력)">
                         </td>
@@ -98,18 +155,27 @@
                     <tr>
                         <td>
                             <label for="uemail">이메일 주소*<br></label>
-                            <input type="email" id="uemail" name="uemail" placeholder="이메일 주소" size="40px">&nbsp;&nbsp;@
+                            <input type="email" id="uemail" name="uemail" placeholder="이메일 주소" size="40px">&nbsp;@
                             <input type="email" id="uemail" name="uemail" size="40px">
-                           <select name="email_kind" id="email_kind">
-                                <option value="gmail">.gmail.com</option>
-                                <option value="naver" selected>.naver.com</option>
-                           </select>
+                            <select name="email_kind" id="email_kind">
+                                 <option value="gmail">.gmail.com</option>
+                                 <option value="naver" selected>.naver.com</option>
+                            </select>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label for="ubirthday">생년월일*</label>
-                            <input type="text">
+                            <label for="ubirthday">생년월일*</label><br>
+                            <input type="date" name="" min="2022-01-01" max="2022-12-31">
+                            <input type="month" name="">
+                            <input type="week" name="">
+                            <input type="date" name="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="submit" value="가입완료">&nbsp;&nbsp;&nbsp;
+                            <input type="reset" value="취소">
                         </td>
                     </tr>
                 </tbody>
