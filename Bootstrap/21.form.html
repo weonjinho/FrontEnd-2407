@@ -6,22 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://kit.fontawesome.com/5ccbd8eea8.js" crossorigin="anonymous"></script> <!-- API 키 -->
 </head>
 <body>
-
   <div class="container-fluid p-5 bg-primary text-white text-center">
     <h1>Form</h1>
   </div>
+
   <div class="container mt-5">
     <div class="row">
       <div class="col">
         <h2>Stacked Form</h2>
-        <!-- <form action="#" method="get">
-          <div class="my-3">
-            <label for="uid">User ID</label>
-            <input type="text" name="uid" id="uid" placeholder="Enter user-id">
-          </div>
-        </form> -->
         <form action="/" method="get">
           <div class="my-3">
             <label for="uid" class="form-label">사용자 ID</label>
@@ -43,6 +38,8 @@
           </div>
         </form>
       </div>
+
+
       <div class="col">
         <h2>테이블과 결합된 양식(추천)</h2>
         <form action="/" method="get">
@@ -55,6 +52,7 @@
                 <input type="text" class="form-control" name="uid" id="uid2" placeholder="사용자 ID를 입력하세요.">
               </td>
             </tr>
+
             <tr>
               <td>
                 <label for="pwd2" class="col-form-label">패스워드</label>
@@ -63,6 +61,9 @@
               <td>
                 <input type="password" class="form-control" name="pwd" id="pwd2" placeholder="패스워드를 입력하세요.">
               </td>
+            </tr>
+
+            <tr>
               <td>
                   <label for="comment">Comments:</label>
               </td>
@@ -70,13 +71,7 @@
                 <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
               </td>
             </tr>
-            <tr>
-              <td colspan="2">
-                <label for="form-check-label">
-                  <input class="form-check-input" type="checkbox" name="remember"> 사용자 ID 기역하기
-                </label>
-              </td>
-            </tr>
+
             <tr>
               <td colspan="2">
                 <label class="form-check-label">
@@ -84,6 +79,7 @@
                 </label>
               </td>
             </tr>
+            
             <tr>
               <td colspan="2" style="text-align: center;">
                 <button type="submit" class="btn btn-primary me-1">제출</button>
@@ -95,6 +91,9 @@
         <!-- 예) 술 판매 : disabled -->
         <!-- input태그에는 disabled속성이 있어서, class에 추가하지 않은것아다. -->
       </div>
+
+
+      
     </div>
     <div class="row">
       <div class="col">
@@ -110,6 +109,123 @@
         <input type="time" class="form-control" value="13:20">
       </div>
     </div>
+
+    <div class="row mt-5">
+      <div class="col">
+        <h3>단일 셀렉트</h3>
+        <select class="form-select"><!-- value값이 서버로 전달 된다. -->
+          <option value="kr">한국어</option>
+          <option value="en" selected>영어</option>
+          <option value="fr">프랑스어</option>
+          <option value="es">스페인어</option>
+        </select>
+
+
+      </div>
+      <div class="col">
+        <h3>다중 셀렉트</h3>
+        <select class="form-select" multiple><!-- multiple : 다중select가능(ctrl누르고 선택) -->
+          <option value="kr">한국어</option>
+          <option value="en" selected>영어</option>
+          <option value="fr">프랑스어</option>
+          <option value="es">스페인어</option>
+        </select>
+      </div>
+      <div class="col">
+        <h3>data list</h3>
+        <label for="browser" class="form-label">Choose your browser from the list:</label>
+        <input class="form-control" list="browsers" name="browser" id="browser">
+        <datalist id="browsers">
+          <option value="Edge">
+          <option value="Firefox">
+          <option value="Chrome">
+          <option value="Opera">
+          <option value="Safari">
+        </datalist>    
+      </div>
+    </div>
+    <!-- input박스 입력제한는 보안상 관리가 편하다. -->
+    <!-- input박스의 제한 조건을 잘 설정해야한다. -->
+    <!-- checkbox는 여러개의 값을 받을 준비를 해야한다. -->
+    <div class="row mt-3">
+      <div class="col-3">
+        <h2>Checkbox</h2>
+        <form action="/" method="get">
+          <div class="form-check">
+            <input type="checkbox"  class="form-check-input" id="check1" name="check" value="val1" checked>
+            <label for="check1" class="form-check-label">Option1</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox"  class="form-check-input" id="check2" name="check" value="val2" >
+            <label for="check2" class="form-check-label">Option2</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox"  class="form-check-input" id="check3" name="check" value="val3" disabled>
+            <label for="check3" class="form-check-label">Option3</label>
+          </div>
+          <button type="submit" class="btn btn-primary">제출</button>
+        </form>
+      </div>
+      <!-- radio : 단일 셀렉트 -->
+      <div class="col-3">
+        <h2>radio button</h2>
+        <div class="form-check">
+          <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>
+          <label class="form-check-label" for="radio1">Option 1</label>
+        </div>
+        <div class="form-check">
+          <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">
+          <label class="form-check-label" for="radio2">Option 2</label>
+        </div>
+        <div class="form-check">
+          <input type="radio" class="form-check-input" disabled>
+          <label class="form-check-label">Option 3</label>
+        </div>
+      </div>
+      <div class="col-6">
+          <h2>Inline Radio buttons(추천)</h2>
+          <input type="radio" class="form-check-input me-2" id="radio1" name="optradio" value="option1" checked>
+          <label class="form-check-label me-5" for="radio1">Option 1</label>
+
+          <input type="radio" class="form-check-input me-2" id="radio2" name="optradio" value="option2">
+          <label class="form-check-label me-5" for="radio2">Option 2</label>
+
+          <input type="radio" class="form-check-input me-2" disabled>
+          <label class="form-check-label me-5">Option 3</label>
+      </div>
+    </div>
+
+    <!-- 검색창 ui예제 -->
+    <div class="row mt-5">
+      <div class="col">
+        <h2>Input Group</h2>
+        <div class="input-group">
+          <span class="input-group-text"><i class="fa-solid fa-magnifying-glass">검색대상</i></span>
+          <input type="text" class="form-control" placeholder="검색할 단어">
+          <button type="button" class="btn btn-primary">검색</button>
+        </div>
+      </div>
+      <div class="col">
+        <h2>Input Group with Dropdown Button</h2>
+        <div class="input-group mt-3 mb-3">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+            Dropdown button
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">제목</a></li>
+            <li><a class="dropdown-item" href="#">내용</a></li>
+            <li><a class="dropdown-item" href="#">글쓴이</a></li>
+          </ul>
+          <input type="text" class="form-control" placeholder="검색할단어">
+          <button class="btn btn-success">검색</button>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
   </div>
 </body>
 </html>

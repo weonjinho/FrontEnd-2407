@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <style>
+        td, input { padding: 3px; }
+        .label { text-align: center; }
+        .container { width: 40%; margin: auto; margin-top: 40px; }
+    </style>
+</head>
+<body>
+    <img src="https://picsum.photos/1000/120" alt="배경화면" width="100%">
+    <div class="container">
+        <h1 class="label">회원가입</h1>
+        <form action="/" method="get">
+            <table class="table">
+                <tr>
+                    <td>
+                        <label for="uid" class="col-form-label">사용자 ID</label>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" name="uid" id="uid" placeholder="사용자 ID를 입력하세요.">
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <label for="pwd" class="col-form-label">패스워드</label>
+                    </td>
+                    <td>
+                        <input type="password" class="form-control" name="pwd" id="pwd" placeholder="패스워드를 입력하세요.">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="pwd2" class="col-form-label">패스워드 확인(*)</label>
+                    </td>
+                    <td>
+                        <input type="password" class="form-control" name="pwd2" id="pwd2" placeholder="패스워드 확인">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="uname" class="col-form-label">이름</label>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" name="uname" id="uname" placeholder="이름(*)">
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <label for="gender" class="col-form-label">성별(*)</label>
+                    </td>
+                    <td>
+                        <input type="radio" class="form-check-input me2" id="male" name="male" value="남자">
+                        <label for="male" class="form-check-label me-5">남자</label>
+                        <input type="radio" class="form-check-input me2" id="female" name="female" value="여자">
+                        <label for="female" class="form-check-label me-5">여자</label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label for="u_email" class="col-form-label">이메일(*)</label>
+                    </td>
+                    <td>
+                        <input type="email" class="form-control" name="u_email" id="u_email" placeholder="이메일(*)">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label for="u_tel" class="col-form-label">전화번호</label>
+                    </td>
+                    <td>
+                        <input type="tel" class="form-control" name="u_tel" id="u_tel" placeholder="전화번호">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label for="comment">Comments:</label>
+                    </td>
+                    <td>
+                    <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                      <button type="submit" class="btn btn-primary me-1">제출</button>
+                      <button type="reset" class="btn btn-secondary">취소</button>
+                    </td>
+                  </tr>
+            </table>
+        </form>
+        <p style="text-align: right;">* 는 필수 항목입니다.</p>
+    </div>
+</body>
+</html>
