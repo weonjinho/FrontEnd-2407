@@ -31,20 +31,17 @@
     <span class="border border-end-0"></span>
     <span class="border border-bottom-0"></span>
     <span class="border border-start-0"></span>
-    <br>
     <hr>
     <span class="border-top"></span>
     <span class="border-end"></span>
     <span class="border-bottom"></span>
     <span class="border-start"></span>
-    <br>
     <hr>
     <span class="border border-1 ms-5"></span>
     <span class="border border-2"></span>
     <span class="border border-3"></span>
     <span class="border border-4"></span>
     <span class="border border-5"></span>
-    <br>
     <hr>
     <span class="border border-primary border-5"></span><!--border-5 : 두게 조절-->
     <span class="border border-secondary"></span>
@@ -55,7 +52,6 @@
     <span class="border border-light"></span>
     <span class="border border-dark"></span>
     <span class="border border-white"></span>
-    <br>
     <hr>
     <span class="rounded grey"></span>
     <span class="rounded-top grey"></span>
@@ -70,6 +66,90 @@
     <span class="rounded-3 grey"></span>
     <span class="rounded-4 grey"></span>
     <span class="rounded-5 grey"></span>
+    <hr>
+    <h2 class="mt-5">Float</h2>
+    <div class="clearfix">
+      <span class="float-start border" style="width: 120px; height: 30px;">Float left</span><!--왼쪽끝-->
+      <span class="float-end border" style="width: 120px; height: 30px;">Float right</span><!--오른쪽끝-->
+    </div>
+    <hr>
+    <h2 class="mt-5">Float</h2>
+    <h2 class="mt-5">Center Align</h2>
+    <div class="mx-auto bg-warning" style="width:150px">Centered</div><!-- block요소 : mx-auto,센터링. -->
+    <hr>
+    <div class="w-25 bg-warning">Width 25%</div>
+    <div class="w-50 bg-warning">Width 50%</div>
+    <div class="w-75 bg-warning">Width 75%</div>
+    <div class="w-100 bg-warning">Width 100%</div>
+    <div class="w-auto bg-warning">Auto Width</div>
+    <div class="mw-100 bg-warning">Max Width 100%</div>
+    <hr>
+    <h2 class="mt-3">Height</h2>
+    <div style="height:200px;background-color:#ddd">
+      <div class="h-25 d-inline-block p-2 bg-warning">Height 25%</div>
+      <div class="h-50  d-inline-block p-2  bg-warning">Height 50%</div>
+      <div class="h-75  d-inline-block p-2  bg-warning">Height 75%</div>
+      <div class="h-100  d-inline-block p-2  bg-warning">Height 100%</div>
+      <div class="h-auto  d-inline-block p-2  bg-warning">Auto Height</div>
+      <div class="mh-100  d-inline-block p-2  bg-warning" style="height:500px">Max Height 100%</div>
+    </div>
+
+    <h2 class="mt-3">Spacing</h2>
+    <div class="pt-4 bg-warning">I only have a top padding (1.5rem)</div>
+    <div class="p-5 bg-success">I have a padding on all sides (3rem)</div>
+    <div class="m-5 pb-5 bg-info">I have a margin on all sides (3rem) and a bottom padding (3rem)</div>
+
+    <!-- 
+      0 - sets margin or padding to 0 ( 16px )
+      1 - sets margin or padding to .25rem ( 4px )
+      2 - sets margin or padding to .5rem ( 8px )
+      3 - sets margin or padding to 1rem ( 16px )
+      4 - sets margin or padding to 1.5rem ( 24px )
+      5 - sets margin or padding to 3rem ( 48px )
+      auto - sets margin to auto 
+    -->
+    <h2 class="mt-3">Shadow</h2>
+    <div class="shadow-none p-4 mb-4 bg-light">No shadow</div>
+    <div class="shadow-sm p-4 mb-4 bg-white">Small shadow</div>
+    <div class="shadow p-4 mb-4 bg-white">Default shadow</div>
+    <div class="shadow-lg p-4 mb-4 bg-white">Large shadow</div>
+
+    <div class="row">
+      <h2 class="mt-3">Aspect Ratio</h2>
+      <div class="col">
+        <div class="ratio ratio-1x1">
+          <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+        </div>
+      </div>
+      <div class="col">
+      <h2>Aspect ratio 4:3</h2>
+        <div class="ratio ratio-4x3">
+          <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+        </div> 
+      </div>
+      <br>
+      <div class="col">
+      <h2>Aspect ratio 16:9</h2>
+        <div class="ratio ratio-16x9">
+          <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+        </div>
+      </div>
+      <br>
+      <div class="col">
+      <h2>Aspect ratio 21:9</h2>
+        <div class="ratio ratio-21x9">
+          <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="mt-3">Visibility</h2>
+    <div class="invisible bg-warning">I am invisible</div>
+    <div class="d-none">display none</div><!-- d-none : display-none -->
+    <!-- display-none : 내용이 들어갈 지라도 없다.(공간이 없어진다.) -->
+    <!-- invisible : 공간은 차지하돼, 내용만 안 보인다. -->
+    <div class="visible bg-success">I am visible</div>
+
   </div>
 </body>
 </html>
