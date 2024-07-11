@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 1300px;
+            height: 800px;
+            margin: auto;
+        }
+
+        article {
+            margin: 0px 30px;
+        }
+
+        .menu_title {
+            text-align: center;
+            font-size: 50px;
+            height: 100px;
+        }
+
+        aside ul li {
+            list-style: none;
+            text-align: left;
+            padding-left: 30px;
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+        .my_info p {
+            /* 이름, 나이, 성별 정보 */
+            width: 100%;
+            padding-left: 10px;
+            text-align: left;
+            margin: auto;
+        }
+
+        tbody tr td:first-child {
+            /* 사이드바 너비 조절 */
+            width: 35%;
+        }
+
+        aside {
+            width: 100%;
+            height: 100%;
+        }
+
+        aside ul {
+            padding: 30px 0px 0px 2px;
+        }
+
+        aside ul li a {
+            text-decoration-line: none;
+            color: black;
+        }
+
+        aside ul li a:hover {
+            color: red;
+        }
+
+        section .profile {
+            text-align: left;
+            /*프로필 사진 중앙정렬*/
+        }
+
+        .birth_place {
+            float: right;
+        }
+        .trip_01, .trip_02, .trip_03{
+            float: right;
+        }
+        .food_01, .food_02, .food_03{
+            float: right;
+        }
+        .hobby_01, .hobby_02{
+            float: right;
+        }
+        .side_menu ul{
+            top: 5px;
+            position: -webkit-sticky;
+            position: sticky;
+        }
+    </style>
+</head>
+
+<body style="background-image: url(./lighthouse-5645042_1920.png);width: 100%; height: 100%;">
+    <table border="1">
+        <thead>
+            <tr>
+                <th class="menu_title" colspan="2">자기소개</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <aside class="side_menu">
+                        <ul>
+                            <li>
+                                <a href="#my_info">
+                                    <img src="./내정보.png" alt="내 정보" style="width: 26px; height: 26px; margin-right: 10px; margin-bottom: 0px;">
+                                    내정보
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#my_birth_place">
+                                    <img src="./출생지.png" alt="출생지" style="width: 26px; height: 26px; margin-right: 10px; margin-bottom: 0px;">
+                                    내가태어난 곳
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#my_trip_plan">
+                                    <img src="./가고 싶은 곳.png" alt="가고 싶은 곳" style="width: 26px; height: 26px; margin-right: 10px; margin-bottom: 0px;">
+                                    내가가보고 싶은 곳
+                                </a>
+                            </li>
+                            <li><a href="#my_trip_plan">
+                                    <img src="./좋아하는음식.png" alt="좋아하는음식" style="width: 26px; height: 26px; margin-right: 10px; margin-bottom: 0px;">
+                                    내가좋아하는 음식
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#my_hobby">
+                                    <img src="./취미.png" alt="취미" style="width: 26px; height: 26px; margin-right: 10px; margin-bottom: 0px;">
+                                    내가좋아하는 것(취미)
+                                </a>
+                            </li>
+                        </ul>
+                    </aside>
+                </td>
+                <td>
+                    <main>
+                        <article>
+                            <section class="my_info" id="my_info" style="border: 2px solid green; margin:20px auto;">
+                                <div style="width: 100%;background-color: rgb(41, 231, 3); text-align: center;">
+                                    <img src="./내정보.png" class="img_background" alt="내 정보" style="width: 40px; height: 40px; margin: auto;">
+                                </div>
+                                <p>이름 : 원진호</p>
+                                <p>나이 : 만 26세</p>
+                                <p>성별 : 남</p>
+                                <p>취미 : 영화, 여행</p>
+                            </section>
+
+
+                            <section class="my_birth_place" id="my_birth_place" style="border: 2px solid red; height: 170px; margin-bottom: 20px;">
+                                <div style="width: 100%; background-color: rgb(235, 235, 61); text-align: center;">
+                                    <img src="./출생지.png" class="birth_place_icon" alt="출생지" style="width: 40px; height: 40px;">
+                                </div>
+                                <a href="https://namu.wiki/w/%EC%88%98%EC%9B%90%EC%8B%9C">
+                                    <img src="../CSS/수원이미지.jpeg" class="birth_place" alt="수원시" style="width: 100px; height:100px; margin-top: 20px;">
+                                </a>
+                                <p style="margin-left: 10px;">제가 대어난 곳은 수원이며, 이후 부모님따라 중국에서 20여년간 생활했었습니다.</p>
+                            </section>
+
+
+                            <section class="my_trip_plan" id="my_trip_plan" style="border: 2px solid red; height: 240px;  margin-bottom: 20px;">
+                                <div style="width: 100%; background-color: beige; text-align: center;">
+                                    <img src="./가고 싶은 곳.png" alt="가고 싶은 곳">
+                                </div>
+                                <div style="overflow: auto; height: 200px;">
+                                    <img src="./나카미세 상점가.jpg" class="trip_01" alt="나카미세 상점가" style="width:100px; height: 100px; margin:20px 10px;">
+                                    <p style="margin-left: 10px;">
+                                        1. 나카미세 상점가
+                                    </p>
+                                    <p style="margin-left: 10px;">
+                                        &nbsp;&nbsp;&nbsp;나카미세는 도쿄의 흔한 상점가가 아니에요. 이곳의 역사는 수 세기 전으로 거슬러 올라가죠. 200m 
+                                        남짓한 보행자 전용 도로 옆으로 100여 개의 상점이 늘어선 나카미세에는 옛 일본의 정서가 그대로 
+                                        녹아 있어요. 전통 유카타, 일본 가면, 인형, 접이식 부채, 티셔츠 등이 대표적인 상품이죠. 쌀로 만든 
+                                        과자인 센베이, 닌교야키(달콤한 팥 앙금이 든 작은 빵), 당고(단맛이 일품인 경단), 카미나리오코시(바
+                                        삭한 식감의 알록달록한 일본 전통 과자) 같은 일본 전통 간식은 꼭 드셔보세요. 나카미세 상점가는 
+                                        센소지 인근의 아사쿠사 중심부에 있습니다.
+                                    </p>
+                                    <img src="./도쿄 스카이트리.jpg" class="trip_02" alt="도쿄 스카이트리" style="width:100px; height: 100px; margin:20px 10px;">
+                                    <p style="margin-left: 10px;">
+                                        2. 도쿄 스카이트리
+                                    </p>
+                                    <p style="margin-left: 10px;">
+                                        &nbsp;&nbsp;&nbsp;도쿄 스카이트리는 현대 일본의 매력을 잘 보여주는 랜드마크에요. 지상에서 634m 위로 높이 솟아 있
+                                        는 이 타워는 전 세계에서 가장 높은 구조물로 꼽히죠. 도쿄 스카이트리는 쇼핑몰, 아쿠아리움, 다양한 
+                                        레스토랑, 기념품 상점이 있는 도쿄 스카이트리 타운에 자리하고 있어요.
+
+                                        이 타워에는 2곳의 전망대가 있는데요. 탁 트인 도쿄와 관동 지역의 전망을 만끽하기 좋은 곳이죠. 덴
+                                        보 데크는 3개 층으로 이루어져 있는 전망대예요. 모든 층에서 유리창을 통해 지상 350m 위에서 도시 
+                                        경관을 감상하실 수 있지요. 유리창과 철 난간이 독특한 분위기를 자아내는 덴보 회랑을 따라 올라가 
+                                        지상 450m 위에서 아찔하고 특별한 추억을 남겨보세요. 전망대에 올라가지 않으셔도 괜찮아요. 도쿄 
+                                        어느 곳을 가든 현대적인 디자인의 멋진 도쿄 스카이트리를 보실 수 있으니까요.
+                                    </p>
+                                    <img src="./도쿄 타워.jpg" class="trip_03" alt="도쿄 타워" style="width:100px; height: 100px; margin:20px 10px;">
+                                    <p style="margin-left: 10px;">
+                                        3. 도쿄 타워
+                                    </p>
+                                    <p style="margin-left: 10px;">
+                                        &nbsp;&nbsp;&nbsp;도쿄 타워는 도쿄의 상징이라고 할 수 있는 유명한 랜드마크죠. 에펠탑을 본떠 설계한 도쿄타워는 관
+                                        동 지역에 대규모 방송 송신탑이 필요했던 1958년에 완공되었어요. 외관은 에펠탑과 유사하지만 도쿄 
+                                        타워가 13m 더 높아요. 지금도 송신탑으로 사용되고 있지요.
+
+                                        150m와 250m 높이의 두 실내 전망대와 기념품점, 게임 코너, 레스토랑, 패스트푸드점, 놀이공원 등의 
+                                        여러 시설이 타워 내에 자리하고 있는데요. 특히 놀이공원에는 옛 향수를 불러일으키는 놀이기구가 
+                                        많아요. 재즈, 알앤비, 보사노바 팬이라면 매주 수요일과 목요일 1층 대전망대의 클럽 333 특설무대에
+                                        서 펼쳐지는 라이브 음악 공연을 놓치지 마세요. 공연은 추가 비용 없이 일반 전망대 요금을 지불하시
+                                        면 관람하실 수 있죠. 250m의 높이를 자랑하는 특별전망대는 바람이 거세게 부는 날에는 문을 닫거나 
+                                        운영 시간이 변경될 수 있어요.
+                                    </p>
+                                </div>
+                            </section>
+
+                            <section class="my_trip_plan" id="my_trip_plan" style="border: 2px solid red; height: 240px;  margin-bottom: 20px;">
+                                <div style="width: 100%; background-color: beige; text-align: center;">
+                                    <img src="./좋아하는음식.png" alt="좋아하는음식">
+                                </div>
+                                <div style="overflow: auto; height: 200px;">
+                                    <img src="./카레라이스.jpg" class="food_01" alt="카레 라이스" style="width:100px; height: 100px; margin:20px 100px 10px 20px;">
+                                    <p style="margin-left: 10px;">
+                                        1. 카레라이스
+                                    </p>
+                                    <br><br><br>
+                                    <img src="./마라탕.jpeg" class="food_02" alt="카레 라이스" style="width:100px; height: 100px; margin:20px 10px;">
+                                    <p style="margin-left: 10px;">
+                                        2. 마라탕
+                                    </p>
+                                </div>
+                            </section>
+
+                            <section class="my_hobby" id="my_hobby" style="border: 2px solid red; height: 240px;  margin-bottom: 20px;">
+                                <div style="width: 100%; background-color: springgreen; text-align: center;">
+                                    <img src="./취미.png" alt="취미">
+                                </div>
+                                <div style="overflow: auto; height: 200px;">
+                                    <img src="./테니스.jpeg" class="hobby_01" alt="테니스" style="width: 100px; height: 100px; margin: 20px 100px 10px 20px;">
+                                    <p style="margin-left: 10px;">
+                                        1. 테니스
+                                    </p>
+                                    <br><br><br>
+                                    <img src="./게임.jpg" class="hobby_02" alt="게임" style="width: 100px; height: 100px; margin: 20px 10px;">
+                                    <p style="margin-left: 10px;">
+                                        2. 게임
+                                    </p>
+                                </div>
+                            </section>
+                        </article>
+                    </main>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
