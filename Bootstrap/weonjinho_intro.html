@@ -19,7 +19,7 @@
             height: 120px;
         }
         .sticky {
-            position: -webkit-sticky; /* Safari */
+            /* position: -webkit-sticky; Safari */
             position: sticky;
             top: 50px;
         }
@@ -34,7 +34,7 @@
     <div class="container-fluid">
         <ul class="navbar-nav">
             <a class="navbar-brand mx-5" href="#">
-                <img src="/Bootstrap/image/logo.png" alt="Logo" style="height: 36px;">
+                <img src="./image2/logo.png" alt="Logo" style="height: 36px;">
             </a>
         </ul>
         <ul class="navbar-nav">
@@ -68,177 +68,211 @@
     <div class="row" style="height: 1500px;">
         <div class="col-3 " style="font-size: 0.9rem;" >
             <div class="sticky">
-            <!-- 원행의 프로필 사진 -->
-            <img src="image/profile_img.jpg" style="width: 80%;" class="rounded-circle mb-3" alt="프로필">
-            <div class="mt-2" >
-                <span>오늘의 상체 메세지를 이 자리에 적습니다.</span>
-                <a href="#"><span class="badge bg-secondary">수정</span></a>
-            </div>
-            <div class="mt-5">
-                <i class="fa-regular fa-envelope me-2"></i>yuanzhenhao59@gmail.com<br>
-                <i class="fa-brands fa-github me-2"></i>
+                <!-- 원행의 프로필 사진 -->
+                <img src="image2/profile_img.jpg" style="width: 80%;" class="rounded-circle mb-3" alt="프로필">
+                <div class="mt-2" >
+                    <span>내일은 내일의 태양이 뜬다.</span>
+                    <a href="#"><span class="badge bg-secondary">수정</span></a>
+                </div>
+                <div class="mt-5">
+                    <i class="fa-regular fa-envelope me-2"></i>yuanzhenhao59@gmail.com<br>
+                    <i class="fa-brands fa-github me-2"></i>
                     <a href="https://github.com/weonjinho" target="_blank">weonjinho</a><br>
-                <i class="fa-brands fa-instagram me-2"></i>
+                    <i class="fa-brands fa-instagram me-2"></i>
                     <a href="https://www.instagram.com/yuanzhenhao59/">yuanzhenhao59</a><br>
-                <i class="fa-solid fa-location-dot me-2"></i>수원시 팔달구
-                    <a href="#"><span class="badge bg-secondary ms-2">날씨</span></a><br>
+                    <i class="fa-solid fa-location-dot me-2"></i>수원시 팔달구
+                    <a href="#"><span class="badge bg-primary ms-2">날씨</span></a><br>
                     <button type="button" class="btn btn-sm btn-outline-primary mt-2">Edit Profile</button>
+                </div>
             </div>
         </div>
-        </div>
+    
 
-    <!-- Main 영역 : 페이지마다 이 부분만 채워줌 -->
-    <div class="col-9">
-        <div class="container">
-            <div class="row" id="birth_place">
-                <h3><strong>내가 태어난 곳 : 수원</strong></h3><hr>
-                <div class="row">
-                    <img src="image/suwon_img.jpg" style="width: 500px; height: 200px;" alt="내가 태어난 곳">
+        <!-- Main 영역 : 페이지마다 이 부분만 채워줌 -->
+        <div class="col-9">
+            <div class="container">
+                <div class="row" id="birth_place">
+                    <h3><strong>내가 태어난 곳 : 수원</strong></h3><hr>
+                    <div class="row justify-content-center">
+                        <img src="image2/suwon_img.jpg" style="width: 500px; height: 200px;" alt="내가 태어난 곳">
+                    </div>
+                    <div class="row mb-5">
+                        <div class="row fs-4">수원시</div>
+                        <div class="row ms-0.5">
+                            &nbsp;&nbsp;&nbsp;안녕하세요? 제 이름은 원진호입니다. 저는 수원에서 테어나 2살 때 부모님과 함께 중국에서 약 20년간 생활했으며, 22년에 군 복무를 마치고. 직장 다니다가, 코딩에 관심이 많아서, 이번 과정에 지원하게 됐습니다. 비록 부족한 점은 많지만 하나씩 채워가는 마인드로 앞으로의 6개월간 과정에 임할 것이며, 이 과정을 통해 우리 모두 원하는 직장에 취업 성공했으면 좋겠습니다.                   
+                        </div>
+                    </div>
                 </div>
-                <div class="row mb-5">
-                    <div class="row fs-4">수원시</div>
-                    <div class="row ms-0.5">
-                        &nbsp;&nbsp;&nbsp;안녕하세요? 저는 원진호라고 합니다. 저는 수원에서 테어나 2살 때 부모님과 함께 중국에서 약 20년간 생활했으며, 22년에 군 복무를 마치고. 직장 다니다가, 코딩에 관심이 많아서, 이번 과정에 지원하게 됐습니다. 비록 부족한 점은 많지만 하나씩 채워가는 마인드로 앞으로의 6개월간 과정에 임할 것이며, 이 과정을 통해 우리 모두 원하는 직장에 취업 성공했으면 좋겠습니다.                   
-                     </div>
-                </div>
-            </div>
-            <div class="row" id="trip">
-                <h3><strong>내가 가보고 싶은 곳</strong></h3><hr>
-                <div class="row text-center d-flex justify-content-between mb-3">
-                    <div class="row justify-content-center"><h4><strong>일본</strong></h4></div>
-                    <div class="row ">
-                        <div class="row">
-                            <h4><strong>나카미세 상점가</strong></h4>
-                           <div class="container-fluid"> 
-                                <div id="demo" class="carousel" data-bs-ride="carousel">
-                                    <!-- Indicators/dots -->
-                                    <div class="carousel-indicators">
-                                        <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-                                        <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-                                        <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-                                    </div>
-                                    <!-- The slideshow/carousel -->
-                                    <div class="carousel-inner ">
-                                        <div class="row" >
-                                            <div class="carousel-item active d-flex justify-content-center">
-                                                <img src="image/카미나리몬.jpg" class="d-block mb-3 justify-content-center" alt="카미나리몬" style="width: 392.5px;height: 245.5px;">
-                                                <div class="carousel-caption ">
-                                                    <h4>카미나리몬</h4>
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item active d-flex justify-content-center">
-                                                <img src="image/아사쿠사.jpeg" class="d-block mb-3 " alt="아사쿠사" style="width: 392.5px;height: 245.5px;">
-                                                <div class="carousel-caption">
-                                                    <h4>아사쿠사</h4>
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item active d-flex justify-content-center">
-                                                <img src="image/나카미세 상점가.jpg" class="d-block mb-3 " alt="나카미세 상점가" style="width: 392.5px;height: 245.5px;">
-                                                <div class="carousel-caption">
-                                                    <h4>나카미세 상점가</h4>
-                                                </div>
-                                            </div>
+                <div class="row" id="trip">
+                    <h3><strong>내가 가보고 싶은 곳</strong></h3><hr>
+                    <div class="row text-center d-flex justify-content-between mb-3">
+                        <div class="row justify-content-center"><h4><strong>일본</strong></h4></div>
+                        <div class="row ">
+                            <div class="row">
+                                <h4><strong>나카미세 상점가</strong></h4>
+                                <div class="container-fluid"> 
+                                    <!-- Carousel -->
+                                    <div id="demo" class="carousel slide" data-bs-ride="carousel">
+                                        <!-- Indicators/dots -->
+                                        <div class="carousel-indicators">
+                                            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                                            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                                            <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
                                         </div>
+                                        <!-- The slideshow/carousel -->
+                                            <div class="carousel-inner">
+                                                <div class="carousel-item active">
+                                                    <img src="image2/카미나리몬.jpg" class="d-block mb-3 " alt="카미나리몬" style="width: 100%;">
+                                                    <div class="carousel-caption ">
+                                                        <h4>카미나리몬</h4>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item active ">
+                                                    <img src="image2/아사쿠사.jpeg" class="d-block mb-3 " alt="아사쿠사" style="width: 100%;">
+                                                    <div class="carousel-caption">
+                                                        <h4>아사쿠사</h4>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item active ">
+                                                    <img src="image2/나카미세 상점가.jpg" class="d-block mb-3 " alt="나카미세 상점가" style="width: 100%;">
+                                                    <div class="carousel-caption">
+                                                        <h4>나카미세 상점가</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <!-- Left and right controls/icons -->
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon"></span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon"></span>
+                                        </button>
                                     </div>
-                                    <!-- Left and right controls/icons -->
-                                    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-                                        <span class="carousel-control-prev-icon"></span>
-                                    </button>
-                                    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-                                        <span class="carousel-control-next-icon"></span>
-                                    </button>
                                 </div>
                             </div>
 
 
 
+                            <!-- accordion 추가 -->
+                            <div id="accordion">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="btn" data-bs-toggle="collapse" href="#location_01">
+                                            <i class="fa-solid fa-location-dot me-1 "></i>위치 : 
+                                        </a>
+                                    </div>
+                                </div>
+                                <div id="location_01" class="collapse" data-bs-parent="#accordion">
+                                    <div class="card-body">
+                                            일본 도쿄도 다이토구 센소지와 카미나리몬 사이. 
+                                            <a href="https://url.kr/i189xk" target="_blank"><span class="badge bg-primary">지도 확인</span></a>
+                                    </div>
+                                </div>
 
-
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="btn" data-bs-toggle="collapse" href="#location_02">
+                                            <i class="fa-solid fa-thumbs-up me-1"></i>맛집 :  
+                                        </a>
+                                    </div>
+                                </div>
+                                <div id="location_02" class="collapse" data-bs-parent="#accordion">
+                                    <div class="card-body">
+                                        <div class="row ms-3">
+                                            추천 맛집 : 
+                                        </div>
+                                        <div class="row ms-3">
+                                            1. 아사쿠사 키비당고 아즈마 : 히야시말차, 키비당고.
+                                            <a href="https://url.kr/dytzt9" target="_blank"><span class="badge bg-primary">지도 확인</span></a>
+                                        <!-- </div>
+                                        <div class="row ms-3"> -->
+                                            2. 이모요캉 후나와 : 고구마 양갱.
+                                            <a href="https://url.kr/6crm4d" target="_blank"><span class="badge bg-primary">지도 확인</span></a>
+                                        <!-- </div>
+                                        <div class="row ms-3"> -->
+                                            3. FUNAWA : 각종 디저트.
+                                            <a href="https://url.kr/i189xk" target="_blank"><span class="badge bg-primary">지도 확인</span></a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="row fs-5 text-center">
-                            <div class="row mb-1">
-                                위치 : 
-                            </div>
-                            <div class="row">
-                                일본 도쿄도 다이토구 센소지와 카미나리몬 사이.
-                            </div>
-                            <div class="row">
-                                추천 맛집 : 
-                            </div>
-                            <div class="row">
-                                1. 아사쿠사 키비당고 아즈마 : 히야시말차, 키비당고. <br>
-                            </div>
-                            <div class="row">
-                                2. 이모요캉 후나와 : 고구마 양갱.
-                            </div>
-                            <div class="row">
-                                3. FUNAWA : 각종 디저트.
+                </div>
+                </div>
+
+                <div class="row" id="my_favorite_food">
+                    <h3><strong>내가 좋아하는 음식</strong></h3><hr>
+                    <div class="row">
+                        <div class="container">
+                            <!-- Carousel -->
+                            <div id="demo2" class="carousel slide" data-bs-ride="carousel">
+                                <!-- Indicators/dots -->
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#demo2" data-bs-slide-to="0" class="active"></button>
+                                    <button type="button" data-bs-target="#demo2" data-bs-slide-to="1"></button>
+                                </div>
+                                <!-- The slideshow/carousel -->
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="image2/카레라이스4.jpg" class="d-block mb-3 " alt="카레라이스" style="width: 100%;">
+                                        <div class="carousel-caption ">
+                                            <h4>카레라이스</h4>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item active ">
+                                        <img src="image2/마라탕.jpg" class="d-block mb-3 " alt="마라탕" style="width: 100%;"><!-- 648x324-->
+                                        <div class="carousel-caption">
+                                            <h4>마라탕</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Left and right controls/icons -->
+                                <button class="carousel-control-prev" type="button" data-bs-target="#demo2" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon"></span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#demo2" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon"></span>
+                                </button>
                             </div>
                         </div>
-
-                    </div>
-     
-            </div>
-            </div>
-            <div class="row" id="my_favorite_food">
-                <h3><strong>내가 좋아하는 음식</strong></h3><hr>
-                <div class="row">
-                    <div class="col-6 mb-5">
-                        <h4><strong>카레라이스</strong></h4>
-                        <div class="col-6">
-                            <div class="row text-center">
-                                <img src="image/카레라이스.jpg" alt="카레라이스" style="width: 300px; height: 200px;">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-6 mb-5">
-                        <h4><strong>마라탕</strong></h4>
-                        <div class="col-6">
-                            <div class="row text-center">
-                                <img src="image/마라탕.jpeg" alt="마라탕" style="width: 300px; height: 200px;">
-                            </div>
-                        </div>                 
                     </div>
                 </div>
-            </div>
-            <div class="row" id="my_hobby">
-                <h3><strong>취미</strong></h3><hr>
-                <div class="row">
-                    <h4><strong>테니스</strong></h4>
-                    <div class="row mb-5">
-                        <div class="col-6">
-                            <div class="row text-center">
-                                <img src="image/테니스.jpg" alt="카레라이스" style="width: 300px; height: 200px;">
+                <div class="row" id="my_hobby">
+                    <h3><strong>취미</strong></h3><hr>
+                    <div class="row">
+                        <h4><strong>테니스</strong></h4>
+                        <div class="row mb-5">
+                            <div class="col-6">
+                                <div class="row text-center">
+                                    <img src="image2/테니스.jpg" alt="카레라이스" style="width: 300px; height: 200px;">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <h5><strong>좋아하는 선수&nbsp;:&nbsp;노바크 조코비치</strong></h5>
                             </div>
                         </div>
-                        <div class="col-6">
-                            <h5><strong>좋아하는 선수&nbsp;:&nbsp;노바크 조코비치</strong></h5>
-                        </div>
-                    </div>
-                    <div class="row" >
-                        <h4><strong>게임</strong></h4>
-                        <div class="col-6" style="margin-bottom: 100px;">
-                            <div class="row text-center">
-                                <img src="image/spider-man-2.gif" alt="게임" style="width: 300px; height: 200px;">
+                        <div class="row" >
+                            <h4><strong>게임</strong></h4>
+                            <div class="col-6" style="margin-bottom: 100px;">
+                                <div class="row text-center">
+                                    <img src="image2/spider-man-2.gif" alt="게임" style="width: 300px; height: 200px;">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-6">
-                            <h5><strong>좋아하는 개임&nbsp;:&nbsp;스파이더맨2</strong></h5>
+                            <div class="col-6">
+                                <h5><strong>좋아하는 개임&nbsp;:&nbsp;스파이더맨2</strong></h5>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-    <!-- Copyright -->
-    <nav class="navbar navbar-expand-sm bg-light fixed-bottom mt-5">
-        <div class="container-fluid justify-content-center">
-            <span class="navbar-text">
-                Copyright & copy; 2021-2024 CK World Corp. All rights reserved.
-            </span>
-        </div>
-    </nav>
+        <!-- Copyright -->
+        <nav class="navbar navbar-expand-sm bg-light fixed-bottom mt-5">
+            <div class="container-fluid justify-content-center">
+                <span class="navbar-text">
+                    Copyright & copy; 2021-2024 CK World Corp. All rights reserved.
+                </span>
+            </div>
+        </nav>
 </body>
 </html>
