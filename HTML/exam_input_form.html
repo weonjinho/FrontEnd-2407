@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 제목 */
+        .important{
+            margin-top: 5px;
+            margin-left: 30px;
+        }
+        .addTitle{
+            width:220px;
+        }
+        .startLine{
+            margin-top: 16px;
+        }
+        .startTime{
+            margin-left: 30px;
+        }
+        .startTimeLabel{
+            margin-left: 70px;
+        }
+        .startInfoInput{
+            margin-top: 5px;
+        }
+
+        .endLine{
+            margin-top: 16px;
+        }
+        .endTime{
+            margin-left: 30px;
+        }
+        .endTimelabel{
+            margin-left: 70px;
+        }
+        .endInfoInput{
+            margin-top: 5px;
+        }
+        /* 장소 */
+        .addLocation{
+            margin-top: 16px;
+        }
+        .addAddressInput{
+            width:220px;
+        }
+        .addMemo{
+            margin-top: 16px;
+        }
+        .addMemoInput{
+            width:220px;
+        }
+        .btnSet{
+            margin-top: 16px;
+            margin-left: 130px;
+        }
+    </style>
+</head>
+<body>
+    <h3>일정추가</h3>
+    <form action="#" method="get">
+        <div>
+            <label for="addTitle">제목</label>
+            <input type="checkbox" name="important" id="important" value="important" class="important" checked>중요<br>
+            <input type="text" name="addTitle" id="addTitle" class="addTitle"><br>
+        </div>
+        <div class="startLine">
+            <div class="startLabel">
+                <label for="startDate" class="startDateLabel">시작일</label>
+                <label for="startTime" class="startTimeLabel">시작시간</label><br>
+            </div>
+            <div class="startInfoInput">
+                <input type="date" name="startDate" id="startDate" class="startDateInput">
+                <input type="time" name="startTime" id="startTime" class="startTimeInput">
+            </div>
+        </div>
+        <div class="endLine">
+            <div class="endLabel">
+                <label for="endDate" class="endDateLabel">종료일</label>
+                <label for="endTime" class="endTimelabel">종료시간</label>
+            </div>
+            <div class="endInfoInput">
+                <input type="date" name="endDate" id="endDate" class="endDateInput">
+                <input type="time" name="endTime" id="endTime" class="endTimeInput">
+            </div>
+        </div>
+        <div class="addLocation">
+            <label for="addAddress" class="addAddressLabel">장소</label><br>
+            <input type="text" name="addAddress" id="addAddressInput" class="addAddressInput"><br>
+        </div>
+        <div class="addMemo">
+            <label for="addMemo" class="addMemoLabel">메모</label><br>
+            <input type="text" name="addMemoInput" id="addMemoInput" class="addMemoInput"><br>
+        </div>
+        <div class="btnSet">
+            <button type="submit" class="submitBtn">제출</button>
+            <button type="reset" class="cancelBtn">취소</button>
+        </div>
+    </form>
+</body>
+</html>
