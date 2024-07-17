@@ -6,7 +6,7 @@ for(let i = 0; i <= N; i++){
         line += ' ';
     }
     for(let k = 0; k<2*i+1;k++){
-        line += '*';
+        line += '*';    // 참이면 * 하나찍는다.
     }
     console.log(line);
 }
