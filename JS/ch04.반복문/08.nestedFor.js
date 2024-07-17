@@ -66,13 +66,6 @@ for(let i = 0;i < 6 ; i++){
 console.log(diceArray);
 
 
-let line2 = [];
-for(let k = 0; k < 6; k++){
-    line2.push(Math.ceil(Math.random()*6))
-}
-console.log(line2);
-
-
 // 구구단 만들기
 for(let i = 2; i <= 9; i++){
     for(let k = 1; k <=9; k++){
