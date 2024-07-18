@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주사위 3개</title>
+    <script>
+        let diceNumbers = [];
+        let gameCount = 0;
+        function throwDice(){
+            for(let i = 0;i<3;i++){
+                let diceNum = Math.ceil(Math.random()*6);
+                diceNumbers.push(diceNum);
+            }
+            let prize = 0;
+            dice1 = Number(diceNumbers[0]);
+            dice2 = Number(diceNumbers[1]);
+            dice3 = Number(diceNumbers[2]);
+            if(dice1==dice2 && dice2==dice3){
+                prize = 10000 + 1000 * dice1;
+            }else if(dice1 == dice2){
+                price = 1000+ 100 * dice1;
+            }else if(dice2 == dice3){
+                price = 1000 + 100 * dice2;
+            }else if(dice1 == dice3){
+                prize = 1000 + 100 * dice1;
+            }else{
+                let maxDice = Math.max(dice1, dice2, dice3);
+                prize = 100 * maxDice;
+            }
+            document.getElementById('result').innerHTML = '<Strong><pre>'+prize+'</pre></Strong>';
+
+        }
+    </script>
+</head>
+<body style="margin: 40px;">
+    <h3>주사위 3개</h3>
+    <hr>
+    <button  onclick="throwDice()">게임하기</button>
+    <div id="result"></div>
+</body>
+</html>

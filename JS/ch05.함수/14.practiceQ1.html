@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나이계산</title>
+    <script>
+        // 출력
+        function checkBirthDay(){
+            // 오늘 날짜 정보 가져오기 : 
+            let today = new Date();
+            let tYear = today.getFullYear();
+            let tMonth = today.getMonth()+1;
+            let tDay = today.getDate();
+            // 생일정보 가져오기 : 
+            let myBirDay = document.getElementById('inputBir').value;
+            let myBirInfo = myBirDay.split('-');
+            let bYear = Number(myBirInfo[0]);
+            let bMonth = Number(myBirInfo[1]);
+            let bDay = Number(myBirInfo[2]);
+            // 나이 변수 선언
+            let age = 0;
+            // 날짜 비교
+            if(tMonth < bMonth){
+                age = tYear-bYear-1;
+            }else if(tMonth > bMonth){
+                age = tYear - bYear;
+            }else{
+                if(tDay >= bDay){
+                    age = tYear - bYear;
+                }else{
+                    age = tYear - bYear -1;
+                }
+            }
+            document.getElementById('result').innerHTML = '<strong>'+age+'</strong>';
+        }
+    </script>
+</head>
+<body style="margin: 40px;">
+    <h3>나이 계산</h3>
+    <hr>
+    <input type="date" id="inputBir" placeholder="생년월일을 입력하세요.">
+    <button onclick="checkBirthDay()">확인</button>
+    <hr>
+    <div id="result"></div>
+</body>
+</html>

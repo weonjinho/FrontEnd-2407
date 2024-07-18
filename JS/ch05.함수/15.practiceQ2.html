@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사분면 문제(함수)</title>
+    <script>   
+        function checkCoordinates(){
+            let xLineNum = Number(document.getElementById('xLine').value);
+            let yLineNum = Number(document.getElementById('yLine').value);
+            let quadrant = '';
+            if (xLineNum > 0 && yLineNum > 0)
+                quadrant = '1사분면';
+            else if (xLineNum < 0 && yLineNum > 0)
+                quadrant = '2사분면';
+            else if (xLineNum < 0 && yLineNum < 0)
+                quadrant = '3사분면';
+            else if (xLineNum > 0 && yLineNum < 0)
+                quadrant = '4사분면';
+            else
+                quadrant = '좌표축';
+            // document.getElementById('result').innerHTML = '<strong>'+xLineNum+'/'+yLineNum+'</strong>';
+            document.getElementById('result').innerHTML = '<strong>'+quadrant+'</strong>';
+        }
+    </script>
+</head>
+<body style="margin: 40px;">
+    <h3>사분면</h3>
+    <hr>
+    <label for="xLine">x축 : </label>
+    <input type="text" id="xLine" placeholder="x축 좌표값을 입력하세요." style="margin-bottom: 8px;"><br>
+    <label for="yLine">y축 : </label>
+    <input type="text" id="yLine" placeholder="y축 좌표값을 입력하세요." style="margin-bottom: 8px;"><br>
+    <button onclick="checkCoordinates()">사분면 확인</button>
+    <hr>
+    <div id="result"></div>
+</body>
+</html>
