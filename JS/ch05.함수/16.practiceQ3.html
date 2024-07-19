@@ -6,7 +6,6 @@
     <title>주사위 3개</title>
     <script>
         let diceNumbers = [];
-        let gameCount = 0;
         function throwDice(){
             for(let i = 0;i<3;i++){
                 let diceNum = Math.ceil(Math.random()*6);
@@ -29,7 +28,6 @@
                 prize = 100 * maxDice;
             }
             document.getElementById('result').innerHTML = '<Strong><pre>'+prize+'</pre></Strong>';
-
         }
     </script>
 </head>
