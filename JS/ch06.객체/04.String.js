@@ -16,14 +16,14 @@ console.log('pineapple'.lastIndexOf('p'));  // 6
 // 문자열을 분리해서 배열을 생성
 let fruits = '수박 참외 포도';
 let furitArray = fruits.split(' ');
-console.log(furitArray);    // [ '수박', ' 참외', ' 포도' ]
+console.log('furitArray :', furitArray);    // [ '수박', ' 참외', ' 포도' ]
 console.log(typeof(furitArray));
 
 // 응용 : 특정 단어가 나온 개수를 탐색할 수 있다.
 
-// 문자열 일부분(substring)
+// 문자열 일부분(substring) 추출
 let today = new Date().toISOString();   // 2024-07-19T02:12:21.103Z
-console.log(today);     
+console.log('today : ',today);     
 // 날짜 추출 - 2024-07-19
 console.log(today.substring(0, 10));    //  ( 시작하는 위치, 원하는 워치 + 1 ) // 0은 포함, 10은 포함하지 않음.
 // 사간 추출 - 02:12:21
