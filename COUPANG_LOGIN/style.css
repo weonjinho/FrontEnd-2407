@@ -1,0 +1,27 @@
+h1 {}
+h1 a {}
+h1 a img {}
+
+main {}
+main #loginForm {}
+main #loginForm fieldset {}
+main #loginForm fieldset ul {}
+main #loginForm fieldset ul li {}
+main #loginForm fieldset ul .error {}
+main #loginForm fieldset ul .id_error {}
+main #loginForm fieldset ul .pw_error {}
+main #loginForm fieldset ul li span {}
+main #loginForm fieldset ul li #id_bg {}
+main #loginForm fieldset ul li #pw_bg {}
+main #loginForm fieldset ul li span input {}
+main #loginForm fieldset ul li span input[type = text] {}
+main #loginForm fieldset ul li span input[type = password] {}
+
+main #loginForm fieldset ul li .pw_show_hide {}
+main #loginForm fieldset ul li .btm {}
+main #loginForm fieldset ul li .btm p {}
+main #loginForm fieldset ul li .btm p label {}
+main #loginForm fieldset ul li .btm p label input{}
+
+
+
