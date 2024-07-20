@@ -24,7 +24,7 @@ console.log(cars);
 
 // reverse()* - 순서 뒤집기
 cars.reverse();
-console.log(cars);
+console.log(cars); // 배열 요소의 순서만 reverse된다.
 
 // sort()* - 정렬
 cars.sort()        // 문자열 기준으로, 오름차순 정렬이 기본.
