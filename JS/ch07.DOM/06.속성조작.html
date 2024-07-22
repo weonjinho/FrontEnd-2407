@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>속성조작</title>
+    <script>
+        // 속성값을 읽고 쓰는 방법.
+        // 속성값 부여, 변경.
+        window.onload = () => {
+            let image = document.querySelector('#image');
+            image.src = 'https://picsum.photos/320/160';
+            image.alt = '렌덤 이미지입니다.';
+            image.setAttribute('width',640); // width속성을 640으로 바꿘다.
+            image.height = 320;
+
+            let width = image.getAttribute('width'); // width속성 가져오기.
+            let height = image.height; // height속성 가져오기.
+            let alt = image.alt;
+            let info =  `width: ${width}, height : ${height}, alt : ${alt}`;
+            document.querySelector('h3').innerText = info;
+        }
+    </script>
+</head>
+<body style="margin: 40px;">
+    <img id="image">
+    <h3></h3>
+</body>
+</html>

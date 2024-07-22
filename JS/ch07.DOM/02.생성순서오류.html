@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>생성순서 오류</title>
+    <script>
+        // CSS Selector : .class  #id  h1  h1,h2  tr>td(자식)  ul li(자손)
+        // document.querySelector ---> CSS Selector로 찾겠다.
+        document.querySelector('body').style.backgroundColor = 'yellow'; // body의 backgroundcolor--> yellow
+        document.querySelector('h1').style.color = 'red'; 
+        // 이 문고가 실행될때 <body>태그는 아직 없다.(그래서 실행이 안되거임.)
+        // .querySelector()사용시 html 실행순서가 중요하다.?
+    </script>
+    <style>
+        /* .class{}
+        #id{}
+        tag{}
+        tag > tag{} */
+    </style>
+</head>
+<body style="margin: 40px;">
+    <h1>Header 1</h1>
+    <h1>Header 2</h1>
+</body>
+</html>

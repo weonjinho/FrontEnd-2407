@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>생성순서 오류 해결4(익명함수 사용)</title>
+    <script>
+        // window.onload = handler; 
+        // const handler = function(){ // 익명 함수
+        //     document.querySelector('body').style.backgroundColor = 'yellow';
+        //     document.querySelector('h1').style.color = 'red'; 
+        // }
+        // 함수 이름을 두번쓰는 것보다 익명함수처리하는 것을 권장한다.
+        // window가 로딩된면 실행한다.
+        window.onload = function(){ // 익명 함수
+            document.querySelector('body').style.backgroundColor = 'yellow';
+            document.querySelector('h1').style.color = 'red'; 
+        }
+        // 스크립트 언어 : inter printer 방식.
+        // 호이스팅
+    </script>
+</head>
+<body style="margin: 40px;">
+    <h1>Header 1</h1>
+    <h2>Header 2</h2>
+</body>
+</html>
