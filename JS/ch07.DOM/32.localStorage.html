@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage</title>
+    <style>
+        input, button, div{padding: 5px;margin: 5px;}
+    </style>
+    <script>
+        window.onload = () => {
+            localStorage.setItem('fruit','복숭아');      // 데이터 저장 : localStorage.setItem('key', 'value');
+            // localStorage.setItem() 메소드는 웹 스토리지 API를 사용하여 브라우저의 로컬 스토리지에 데이터를 저장할 때 사용됩니다.
+            // localStorage 는 웹 페이지의 세션이 끝나더라도 데이터가 사라지지 않고 유지됩니다.
+            // 기본식 : localStorage.setItem(key, value);
+            // key : 저장할 데이터의 키 (문자열).
+            // value : 저장할 데이터의 값 (문자열).
+            // *** 객체나 배열을 로컬 스토리지에 저장하려면 JSON 문자열로 반환해야 합니다.   객체/배열 --> JSON문자열 --> localstorage에 저장.
+            // const user = { name:'홍길동', age:30, isStudent:false };
+            // localStorage.setItem( 'user', JSON.stringify(user) );
+            let fruit = localStorage.getItem('fruit');  // localStorage.getItem('key') : 'key'라는 이름으로 저장된 값을 로컬 스토리지에서 가져온 후, 그 값을 fruit변수에 대입한다.
+            document.querySelector('h1').innerHTML = fruit; // <h1>태그의innerHTML를 'value'값으로 대입한다.
+            localStorage.setItem('object', JSON.stringify({name : '복숭아', price : 2000})); // localStorage.setItem('key', 'value');
+            // object를 JSON으로 밖궈서 넣는다.
+            let obj = JSON.parse(localStorage.getItem('object')) ; 
+            // 그저는 값을 못 가져오니, JSON으로.stringfy()한 후, 또 파싱해서 obj변수에 저장했다.
+            // localStorage.getItem('key') : 'key'라는 이름으로 저장된 값을 로컬 스토리지에서 가져온 후, 그 값을 fruit변수에 대입한다.
+            const {name,price} = obj;   // const {name,price} = {'복숭아',2000}; 
+            // 이 과정에서 name = ' 복숭아'가 되고, price = 2000이 된다.
+            document.querySelector('#obj').innerHTML = `${name} : ${price}`;    // 화면의 출력.
+
+            let fruits = [                                  // 배열생성, 값 대입.
+                {name : '복숭아', price : 3000},
+                {name : '수박', price : 20000}
+            ];
+            // fruits는 object의 array.
+            localStorage.setItem('array',JSON.stringify(fruits));
+            // ChatGPT - JSON.stringify() 검색
+            // JavaScript 객체 or 배열 ---> JSON 문자열.
+            // JSON.stringify()메소드는 JavaScript객체나 배열을 JSON문자열로 변환하는데 사용됩니다. 이 메소드는 서버로 데이터를 전송할 때나 데이터를 로컬
+            // 스토리지에 저장할 때 유용합니다.
+            // 기본식 : JSON.stringify(value,replacer,space);
+            // value : JSON 문자열로 반환할 값 (객체나 배열).
+            // replacer(선택사항) : 변환 과정에서 필터링을 할 수 있는 함수 또는 배열.
+            // space(선택사항) : 결과 JSON 문자열의 가독성을 높이기 위해 들여쓰기 할 공백 문자 수 또는 문자열.
+            let array = JSON.parse(localStorage.getItem('array'));
+            // ChatGPT - JSON.parse() 검색
+            // JSON 문자열 ---> JavaScript 객체 or 배열
+            // 이 메소드는 서버에서 빋은 JSON 데이터를 JavaScript 객체로 변환하거나, 로컬 스토리지에서
+            // 가져온 JSON 문자열 데이터를 다룰 때 유용합니다.
+            // 기본식 : JSON.parse(text, reviver);
+            // text : JSON 문자열.
+            // reviver(선택사항) : 각 값이 변환될 때 호출되는 함수.
+            // 기본 사용 예 : 
+            // 1. JSON 문자열을 객체로 변환
+            // const jsonString = '{"name": "홍길동", "age": 30, "isStudent": false}';
+            // const jsonObject = JSON.parse(jsonString);
+            // console.log(jsonObject.name);  // 출력: 홍길동
+            // console.log(jsonObject.age);   // 출력: 30
+            // console.log(jsonObject.isStudent); // 출력: false
+
+            // 2. JSON 문자열을 배열로 변환
+            // const jsonString = '["사과", "바나나", "딸기"]';
+            // const jsonArray = JSON.parse(jsonString);
+            // console.log(jsonArray[0]);  // 출력: 사과
+            // console.log(jsonArray[1]);  // 출력: 바나나
+            // console.log(jsonArray[2]);  // 출력: 딸기
+            console.log(array);
+            // 값을 json으로 변환해서 localStoryge에 저장.
+
+            // 여러개의{'key':'value', 'key':'value', 'key':'value'}를 배열로 묶어서 todoList에 대입.
+            let todoList = [
+                {key:0, name:'점심먹기', flag:true},    // flag : checkbox내용의 체크여부 true/false;
+                {key:1, name:'수업듣기', flag:false}, 
+                {key:2, name:'저녁먹기', flag:false}, 
+            ];
+            // JSON.stringify(todoList) : 배열(todoList) ---> JSON 문자열
+
+            localStorage.setItem('todoList',JSON.stringify(todoList));
+            let inputList = JSON.parse(localStorage.getItem('todoList'));
+            console.log(inputList);
+            
+            const result = document.getElementById('result');
+            for(let todo of inputList){
+                const item = document.createElement('div');
+                const checkBox = document.createElement('input');
+                const text = document.createElement('span');
+                const button = document.createElement('button');
+
+                // item 객체 조작후 (div태그) todo-list에 매긴다.
+                item.setAttribute('data-key',todo.key);  // <div date-key = "0">  list항목을 구분하는 key값.
+                item.appendChild(checkBox);
+                item.appendChild(text);
+                item.appendChild(button);
+                result.appendChild(item);
+
+                // checkbox 조작
+                checkBox.type = 'checkbox';     // <input type = "checkbox">
+                checkBox.addEventListener('change', e => {
+                    item.style.textDecoration = e.target.checked ? "line-through" : ''; // line-through : 최소선.
+                });
+                checkBox.checked = todo.flag;
+                if(todo.flag){
+                    item.style.textDecoration = 'line-through';
+                }
+
+                // text 조작
+                text.innerHTML = todo.name;
+                // button 조작
+                button.innerText = '제거하기';
+                button.addEventListener('click', () => {
+                    removeTodo(todo.key);
+                });
+            }
+        }
+
+
+
+
+    </script>
+</head>
+<body style="margin: 40px;">
+    <h1></h1>
+    <h1 id="obj"></h1>
+    <hr>
+    <div id="result"></div>
+</body>
+</html>
