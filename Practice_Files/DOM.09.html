@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 처리</title>
+    <script>
+        function btn2click(){
+            alert('버튼2 클릭되었음.');
+        }
+        window.onload = () => {
+            const btn3 = document.querySelector('#btn3');
+            btn3.onclick = () =>{
+                alert('버튼 3 크릭되었음.');
+            }
+            
+        }
+    </script>
+</head>
+<body>
+    <button onclick="alert('버튼1이 클릭뒤었음.')">버튼 1</button>
+    <button onclick="btn2click()">버튼 2</button>
+    <button id="btn3">버튼 3</button>
+    <br><br>
+    <button id="btn4">클릭, 마우스오버, 마우스아웃</button>
+    <button id="btn5">마우스오버, 마우스아웃</button>
+    <br><br>
+    <a href="https://hanbit.co.kr/academy/">한빛아카데미</a>
+    <button onclick="local.href = 'https://hanbit.co.kr/academy/'">한빛아카데미</button>
+    <button id="btn7">a 태그 기본속성 제거</button>
+    <br><br>
+    <input type="text" id="name">
+    <button id="btn8">택스트 인춧처리</button>
+    <span id="result"></span>
+</body>
+</html>
