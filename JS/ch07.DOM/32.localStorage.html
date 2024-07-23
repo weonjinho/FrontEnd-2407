@@ -8,6 +8,7 @@
         input, button, div{padding: 5px;margin: 5px;}
     </style>
     <script>
+        // 개발자 도구 --> Elements에서 전체 코드를 볼 수 있다.
         window.onload = () => {
             localStorage.setItem('fruit','복숭아');      // 데이터 저장 : localStorage.setItem('key', 'value');
             // localStorage.setItem() 메소드는 웹 스토리지 API를 사용하여 브라우저의 로컬 스토리지에 데이터를 저장할 때 사용됩니다.
@@ -89,6 +90,13 @@
 
                 // item 객체 조작후 (div태그) todo-list에 매긴다.
                 item.setAttribute('data-key',todo.key);  // <div date-key = "0">  list항목을 구분하는 key값.
+                // .setAttribute()메소드는 HTML요소에 속성을 추가하거나 기존 속성의 값을 변경할 때 사용됩니다.
+                // 속성 변경 / 속성 추가.
+                // 이 메소드는 모든 HTML 요소에 사용할 수 있으며, 속성 이름과 속성 값을 인수로 받습니다.
+                // 기본식 : element.setAttribute( name, value );
+                // element : 속성을 설정할 HTML요소.
+                // name : 설정할 속성의 이름(문자열).
+                // value : 설정할 속성의 값(문자열).
                 item.appendChild(checkBox);
                 item.appendChild(text);
                 item.appendChild(button);
