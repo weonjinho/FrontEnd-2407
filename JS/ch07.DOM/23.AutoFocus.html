@@ -21,7 +21,10 @@
 
             input1.onkeyup = () => {
                 if (input1.value.length >= 6)
-                    input2.focus();
+                    input2.focus();         
+                // .focus()메소드는 HTML요소에 포커스를 설정하는 데 사용됩니다. 일반적으로 폼 요소(input,textarea,select 등)나
+                // 링코(a태그)에 사용됩니다.
+                // 이 메소듣는 해당 요소가 페이지에서 사용자 입력을 받을 수 있도록 합니다.
             }
             input2.onkeyup = e => {
                 // if (e.keyCode == 8 && input2.value.length == 0)     // 입력한 글자가 없고, 백스페이스를 입력했을때

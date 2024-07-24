@@ -7,11 +7,11 @@
     <script>
         window.onload = () => {
             const star = document.querySelector('h1');
-            star.style.position = 'absolute';
+            star.style.position = 'absolute'; // position : absolute; 속성은 주로 요소를 특정 위치에 고정시킬 때 사용됩니다.
 
             // 별 출력
             let [x, y] = [0, 0];
-            const block = 30;
+            const block = 30;   // 별을 한번에 30px씩 이동.
             const print = () => {
                 star.style.left = `${x * block}px`;
                 star.style.top = `${y * block}px`;
@@ -19,16 +19,17 @@
             print();
 
             // 별 이동
-            const [left, up, right, down] = [37, 38, 39, 40];
+            const [left, up, right, down] = [37, 38, 39, 40];   // event.keyCode 코드표 : 37(방향키(<-)); 38(방향키(up))...
+            // left:37, up:38, right:39, down:40.
             document.body.addEventListener('keydown', event => {
                 switch(event.keyCode) {
-                case left:
+                case left:  // event.keyCode = '37';
                     x--; break;
-                case up:
+                case up:    // event.keyCode = '38';
                     y--; break;
-                case right:
+                case right:    // event.keyCode = '39';
                     x++; break;
-                case down:
+                case down:    // event.keyCode = '40';
                     y++; break;
                 }
                 print();
