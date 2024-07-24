@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <style>
+        img{
+            width: 30px
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/792b18b587.js" crossorigin="anonymous"></script>
+    <script>
+        function twoDigit(num) {
+            return num < 10 ? '0' + num : String(num);
+        }
+
+        function today1(now) {
+            const week = '일월화수목금토'.split('')
+            const weekDay = week[now.getDay() % 7]
+            document.getElementById('yoil').innerHTML = `(${weekDay})`
+            return `${now.getFullYear()}-${twoDigit(now.getMonth()+1)}-${twoDigit(now.getDate())}(${weekDay})`;
+        }
+        
+        function today2(now) {
+            return `${twoDigit(now.getHours())}:${twoDigit(now.getMinutes())}:${twoDigit(now.getSeconds())}`;
+        }
+
+        window.onload = () => {
+            setInterval(() => {
+                let now = new Date();
+                let dateStr = today1(now);
+                let timeStr = today2(now);
+                document.getElementById('todayDate').innerHTML = dateStr;
+                document.getElementById('todayTime').innerHTML = timeStr;
+                
+                let num1 = 0
+                let num2 = 0
+                const arrayDate = [4, 7, 10, 11, 12]
+                const arrayDate2 = [10, 11, 12]
+                const arrayTime = [2, 5]
+                for (let i = 0; i <= 12; i++) {
+                    if (arrayDate.includes(i))
+                        continue;
+                    document.getElementById(`${i}`).src = `03_img/${dateStr[i]}.svg`;
+                }
+                for (let k = 0; k <= 7; k++) {
+                    if (arrayTime.includes(k))
+                        continue;
+                    document.getElementById(`${k + 10}`).src = `03_img/${timeStr[k]}.svg`;
+                }
+            }, 1000)
+        }
+    </script>
+</head>
+<body style="margin: 40px;">
+    <h1 id="todayDate"></h1>
+    <h1 id="todayTime"></h1>
+    <div style="vertical-align: middle;">
+        <img id="0">
+        <img id="1">
+        <img id="2">
+        <img id="3">
+        <img src="03_img/하이픈.jpg" alt="">
+        <img id="5">
+        <img id="6">
+        <img src="03_img/하이픈.jpg" alt="">
+        <img id="8">
+        <img id="9">
+        <span id="yoil" style="font-size: 32px;"></span>
+        <br>
+        <img id="10">
+        <img id="11">
+        <img src="03_img/Colon.jpg">
+        <img id="13">
+        <img id="14">
+        <img src="03_img/Colon.jpg">
+        <img id="16">
+        <img id="17">
+    </div>
+</body>
+</html>

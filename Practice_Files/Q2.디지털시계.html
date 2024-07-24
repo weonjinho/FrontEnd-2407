@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>디지털 시계(그래픽 버전)</title>
+    <title>디지털 시계</title>
     <style>
         img { width: 100px; }
     </style>
@@ -13,60 +13,65 @@
         }
         function myDate(now) {
             const week = '일월화수목금토'.split('');
-            return `${now.getFullYear()}-${twoDigit(now.getMonth() + 1)}-${twoDigit(now.getDate())}(${week[now.getDay() % 7]})`;
+            const weekDay = week[now.getDay() %7];
+            document.querySelector('#weekDay').innerHTML = `(${weekDay})`;
+            return `${now.getFullYear()}-${twoDigit(now.getMonth() + 1)}-${twoDigit(now.getDate())}(${weekDay})`;
         }
         function myTime(now) {
             return `${twoDigit(now.getHours())}:${twoDigit(now.getMinutes())}:${twoDigit(now.getSeconds())}`;
         }
         window.onload = () => {
             setInterval(() => {
-
-                let yearImage1 = document.createElement('img');
-                let yearImage2 = document.createElement('img');
-                let yearImage3 = document.createElement('img');
-                let yearImage4 = document.createElement('img');
-                document.querySelector('#date').appendChild(yearImage1);
-                document.querySelector('#date').appendChild(yearImage2);
-                document.querySelector('#date').appendChild(yearImage3);
-                document.querySelector('#date').appendChild(yearImage4);
-                yearImage1.src = `img/${timeStr[0]}.svg`;
-                yearImage2.src = `img/${timeStr[1]}.svg`;
-                yearImage3.src = `img/${timeStr[2]}.svg`;
-                yearImage4.src = `img/${timeStr[3]}.svg`;
-
-
-
-                let now = new Date();
-                let dateStr = myDate(now);
-                let nYear = now.getFullYear();
-                let nMonth = now.getMonth();
-                let nDay = now.getDate();
-
-                // document.getElementById('date').innerHTML = dateStr;
-                document.getElementById('date').innerHTML = `${yearImage1}- ${yearImage2}-${yearImage3}-${yearImage4}`+dateStr;
-    
-                let timeStr = myTime(now);
-                // document.getElementById('time').innerHTML = timeStr;
-                document.getElementById('h1').src = `img/${timeStr[0]}.svg`;
-                document.getElementById('h2').src = `img/${timeStr[1]}.svg`;
-                document.getElementById('m1').src = `img/${timeStr[3]}.svg`;
-                document.getElementById('m2').src = `img/${timeStr[4]}.svg`;
-                document.getElementById('s1').src = `img/${timeStr[6]}.svg`;
-                document.querySelector('#s2').src = `img/${timeStr[7]}.svg`;
-            }, 1000);
+                let today = new Date();
+                let dateStr = myDate(today);
+                let timeStr = myTime(today);
+                document.querySelector('#date').innerHTML = dateStr;
+                document.querySelector('#time').innerHTML = timeStr;
+                let num1 = 0;
+                let num2 = 0;
+                const arrayDate = [4,7,10,11,12];
+                const arrayDate2 = [10,11,12];
+                const arrayTime = [2,5];
+                for(let i =0;i<=12;i++){
+                    if(arrayDate.includes(i)){
+                        continue;
+                    }
+                    document.getElementById(`${i}`).src = `img/${dateStr[i]}.svg`;
+                }
+                for(let k = 0;k<=7;k++){
+                    if(arrayTime.includes(k)){
+                        continue;
+                    }
+                    document.getElementById(`${k+10}`).src = `img/${timeStr[k]}.svg`;
+                }
+            }, 1000)
         }
     </script>
 </head>
 <body style="margin: 40px;">
-    <h1 id="date"></h1>
-    <hr><br>
-    <img id="h1">
-    <img id="h2">
-    <img src="img/Colon.jpg">
-    <img id="m1">
-    <img id="m2">
-    <img src="img/Colon.jpg">
-    <img id="s1">
-    <img id="s2">
+    <h3 id="date"></h3>
+    <h3 id="time"></h3>
+    <div>
+        <img id="0">
+        <img id="1">
+        <img id="2">
+        <img id="3">
+        <img src="img/hyphen_img.png" alt="hyphen_img">
+        <img id="5">
+        <img id="6">
+        <img src="img/hyphen_img.png" alt="hyphen_img">
+        <img id="8">
+        <img id="9">
+        <span id="weekDay" style="font-size: 32px;"></span>
+        <br>
+        <img id="10">
+        <img id="11">
+        <img src="img/Colon.jpg">
+        <img id="13">
+        <img id="14">
+        <img src="img/Colon.jpg">
+        <img id="16">
+        <img id="17">
+    </div>
 </body>
 </html>

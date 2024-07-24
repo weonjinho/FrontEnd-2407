@@ -5,25 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>문자조작</title>
     <script>
-        function changeText(){
-            let header = document.querySelector('#header');
-            let originalText = header.innerHTML; // innerHTML객체의 속성
-            header.innerHTML = '자바스크립트로 변경<br>';
-            header.innerHTML += `원래는 "${originalText}" 이었습니다.`;
-        }
-        function escapeText(){
-            let header = document.querySelector('#header');
-            let originalText = header.innerHTML; 
-            header.textContent = '<i> i 태그입니다.</i>';
-            header.innerHTML += '<br><i> i 태그입니다.</i>';
-            header.innerHTML += '<br>&lt;i&gt;i 태그입니다.&lt;/i&gt;';
-            // innerHTML()를 <i>태그가 적용이 된는데, textContent()에는 적용이 안된다.
-        }
+        // function changeText(){
+        //     let header = document.querySelector('#header');
+        //     let originalText = header.innerHTML; // innerHTML객체의 속성
+        //     originalText = '자바스크립트로 변경<br>';
+        //     header.innerHTML += `원래는 "${originalText}" 이었습니다.`;
+        // }
+        // function escapeText(){
+        //     let header = document.querySelector('#header');
+        //     let originalText = header.innerHTML; 
+        //     header.textContent = '<i> i 태그입니다.</i>';
+        //     header.innerHTML += '<br><i> i 태그입니다.</i>';
+        //     header.innerHTML += '<br>&lt;i&gt;i 태그입니다.&lt;/i&gt;';
+        //     // innerHTML()를 <i>태그가 적용이 된는데, textContent()에는 적용이 안된다.
+
+        //     // .textContent :
+        //     // 내용 설정 밎 가져오기 : .textContent는 요소의 텍스트 콘텐츠를 가져오거나 설정합니다. 이 속성은 HTML태그를 무시하고
+        //     // 텍스트만을 다룹니다.
+        //     // HTML 코드 무시 
+        //     // .innerHTML : 
+        //     // HTML 코드 해석 
+        // }
+
+        $(document).ready(()=>{
+            function changeText(){
+                // alert($('body > button:nth-child(2)').text());
+                $('button').eq(0).click(changeText).text();
+            }
+            function escapeText(){
+                // alert($('body > button:nth-child(3)').text());
+                $('button').eq(1).click(escapeText).text();
+            }
+        });
+
+
+
     </script>
 </head>
 <body style="margin: 40px;">
     <h1 id="header">Header 1</h1>
-    <button onclick="changeText()">문자 변경</button>
-    <button onclick="escapeText()">Escape 문자 변경</button>
+    <button onclick="changeText()">문자 변경</button>   
+    <button onclick="escapeText()">Escape 문자 변경</button>   
 </body>
 </html>

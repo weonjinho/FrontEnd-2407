@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>생성순서 오류 해결4(익명함수 사용)</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
     <script>
         // window.onload = handler; 
         // const handler = function(){ // 익명 함수
@@ -12,10 +13,18 @@
         // }
         // 함수 이름을 두번쓰는 것보다 익명함수처리하는 것을 권장한다.
         // window가 로딩된면 실행한다.
-        window.onload = function(){ // 익명 함수
-            document.querySelector('body').style.backgroundColor = 'yellow';
-            document.querySelector('h1').style.color = 'red'; 
-        }
+        // window.onload = function(){ // 익명 함수
+        //     document.querySelector('body').style.backgroundColor = 'yellow';
+        //     document.querySelector('h1').style.color = 'red'; 
+        // }
+
+        $(document).ready(() => {
+            $('body').css('backgroundColor','yellow');
+            $('h1').css('color','red');
+        })
+
+
+
         // 스크립트 언어 : inter printer 방식.
         // 호이스팅
     </script>
