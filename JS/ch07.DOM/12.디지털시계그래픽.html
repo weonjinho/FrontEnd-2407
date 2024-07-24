@@ -16,7 +16,7 @@
             return `${now.getFullYear()}-${twoDigit(now.getMonth() + 1)}-${twoDigit(now.getDate())}(${week[now.getDay() % 7]})`;
         }
         function myTime(now) {
-            return `${twoDigit(now.getHours())}:${twoDigit(now.getMinutes())}:${twoDigit(now.getSeconds())}`;
+            return `${twoDigit(now.getHours())}:${twoDigit(now.getMinutes())}:${twoDigit(now.getSeconds())}`; // Hours, Minutes, Seconds
         }
         window.onload = () => {
             setInterval(() => {
@@ -25,20 +25,25 @@
                 document.getElementById('date').innerHTML = dateStr;
     
                 let timeStr = myTime(now);
-                // document.getElementById('time').innerHTML = timeStr;
+                document.getElementById('time').innerHTML = timeStr;
+                // *** JavaScript에서 문자열은 인덱스 번호로 개별 문자에 접근할 수 있어 배열처럼 다룰 수 있습니다.
+                // 각 문자들의 집합으로, 각 문자는 인덱스라는 숫자를 통해 접근할 수 있습니다. 인덱스는 0부터 시작합니다.
+                // 예) 2 0 : 5 3 : 3 0  indexNum : 0~7
                 document.getElementById('h1').src = `img/${timeStr[0]}.svg`;
                 document.getElementById('h2').src = `img/${timeStr[1]}.svg`;
                 document.getElementById('m1').src = `img/${timeStr[3]}.svg`;
                 document.getElementById('m2').src = `img/${timeStr[4]}.svg`;
                 document.getElementById('s1').src = `img/${timeStr[6]}.svg`;
-                document.querySelector('#s2').src = `img/${timeStr[7]}.svg`;
+                document.getElementById('s2').src = `img/${timeStr[7]}.svg`;    
             }, 1000);
         }
     </script>
 </head>
 <body style="margin: 40px;">
     <h1 id="date"></h1>
+    <h1 id="time"></h1>
     <hr><br>
+    <!-- <h1 id="time"></h1> -->
     <img id="h1">
     <img id="h2">
     <img src="img/Colon.jpg">

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{ width: 50px; }
+    </style>
+    <script>
+        function twoDigit(num){
+            return num < 10 ? '0' + num : String(num);
+        }
+        function myDate(now){
+            const week = '일월화수목금토'.split(''); // JS에서는 문자열을 배열로 사용할 수 있다.
+            alert(week);
+            let weekStr = `${week[now.getDay()%7]}`;
+            return `${now.getFullYear()}-${twoDigit(now.getMonth()+1)}-${twoDigit(now.getDate())}(${weekStr})`;   // Hours, Minutes, Seconds 주의!
+        }
+        function myTime(now){
+            return `${twoDigit(now.getHours())}:${twoDigit(now.getMinutes())}:${twoDigit(now.getSeconds())}`;
+        }
+        window.onload = () => {
+            setInterval(() => {
+                let now = new Date();
+                let dateStr = myDate(now);
+                document.getElementById('date').innerHTML = dateStr;
+                // 2024-07-25(목)
+                document.getElementById('year1').src = `img/${dateStr[0]}.svg`;
+                document.getElementById('year2').src = `img/${dateStr[1]}.svg`;
+                document.getElementById('year3').src = `img/${dateStr[2]}.svg`;
+                document.getElementById('year4').src = `img/${dateStr[3]}.svg`;
+                document.getElementById('month1').src = `img/${dateStr[5]}.svg`;
+                document.getElementById('month2').src = `img/${dateStr[6]}.svg`;
+                document.getElementById('day1').src = `img/${dateStr[8]}.svg`;
+                document.getElementById('day2').src = `img/${dateStr[9]}.svg`;
+                document.getElementById('week').innerHTML = `(${dateStr[11]})`; // JS에서는 문자열을 배열로 사용할 수 있다. 2024-07-25(목)
+
+                let timeStr = myTime(now);
+                document.getElementById('time').innerHTML = timeStr;
+                // 03:38:23
+                document.getElementById('h1').src = `img/${timeStr[0]}.svg`;
+                document.getElementById('h2').src = `img/${timeStr[1]}.svg`;
+                document.getElementById('m1').src = `img/${timeStr[3]}.svg`;
+                document.getElementById('m2').src = `img/${timeStr[4]}.svg`;
+                document.getElementById('s1').src = `img/${timeStr[6]}.svg`;
+                document.getElementById('s2').src = `img/${timeStr[7]}.svg`;
+            }, 1000);
+        }
+    </script>
+</head>
+<body style="margin: 40px;">
+    <div style="vertical-align: middle;">
+        <!-- 년-월-일(요일) -->
+        <h4 id="date"></h4>
+        <!-- 시:분:초 -->
+        <h4 id="time"></h4>
+        <hr>
+        <!-- 년 -->
+        <img id="year1">
+        <img id="year2">
+        <img id="year3">
+        <img id="year4">
+        <img src="img/Colon.jpg">
+        <!-- 월 -->
+        <img id="month1">
+        <img id="month2">
+        <img src="img/Colon.jpg">
+        <!-- 일 -->
+        <img id="day1">
+        <img id="day2">
+        <!-- 요일 -->
+        <span id="week" style="font-size: 32px;"></span>
+        <hr>
+        <!-- 시 -->
+        <img id="h1">
+        <img id="h2">
+        <img src="img/Colon.jpg">
+        <!-- 분 -->
+        <img id="m1">
+        <img id="m2">
+        <img src="img/Colon.jpg">
+        <!-- 초 -->
+        <img id="s1">
+        <img id="s2">
+    </div>
+</body>
+</html>
