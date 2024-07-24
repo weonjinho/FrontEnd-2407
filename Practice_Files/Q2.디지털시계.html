@@ -20,9 +20,30 @@
         }
         window.onload = () => {
             setInterval(() => {
+
+                let yearImage1 = document.createElement('img');
+                let yearImage2 = document.createElement('img');
+                let yearImage3 = document.createElement('img');
+                let yearImage4 = document.createElement('img');
+                document.querySelector('#date').appendChild(yearImage1);
+                document.querySelector('#date').appendChild(yearImage2);
+                document.querySelector('#date').appendChild(yearImage3);
+                document.querySelector('#date').appendChild(yearImage4);
+                yearImage1.src = `img/${timeStr[0]}.svg`;
+                yearImage2.src = `img/${timeStr[1]}.svg`;
+                yearImage3.src = `img/${timeStr[2]}.svg`;
+                yearImage4.src = `img/${timeStr[3]}.svg`;
+
+
+
                 let now = new Date();
                 let dateStr = myDate(now);
-                document.getElementById('date').innerHTML = dateStr;
+                let nYear = now.getFullYear();
+                let nMonth = now.getMonth();
+                let nDay = now.getDate();
+
+                // document.getElementById('date').innerHTML = dateStr;
+                document.getElementById('date').innerHTML = `${yearImage1}- ${yearImage2}-${yearImage3}-${yearImage4}`+dateStr;
     
                 let timeStr = myTime(now);
                 // document.getElementById('time').innerHTML = timeStr;

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예외처리</title>
+    <script>
+        console.log('프로그램이 시작되었습니다.');
+        try {
+            console.rog('괄호를 닫지 않는 실수를 저질렸습니다.'); // 에러 코드 작성 위치.
+        } catch (error) {
+            console.log('에러가 발생을 했습니다.'); // 에러가 발생하면 이 코드가 실행된다.(에러 처리했다.)
+            // 에러를 통해서 정보를 얻을 수 있다.
+            console.log(error.name);    // 에러 이름
+            console.log(error.message); // 에러 메시지
+            // 개발자가 에러를 보고 관리한다.
+
+            // 시스템이 정지되지 않고 계속 실행할 수 있게. 예러 하나가 시스템 전체를 다운 시키지는 않게한다.
+            // I/O작업(파일 다루는 작업)은 예외처리를 하는것이 좋다.
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 시작</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+    <script>
+        // window.onload = () => {
+
+        // }
+        $(document).ready(() => {       
+        // $(document).ready(...): DOM이 완전히 로드된 후에 jQuery 코드를 실행하도록 합니다.
+            $('h1').text('jQuery가 생성').css('color','red');
+        });
+    </script>
+</head>
+<body style="margin: 40px;">
+    <h1></h1>
+</body>
+</html>
