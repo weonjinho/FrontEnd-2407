@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(() => {
+            $('h1')             // 모든 h1 태그에 대해.
+                .on('mouseover', function(e) {       // .on() --> .addEventListener()와 용도가 같다.  // key 이벤트에는 event를 반드시 써야한다.!!!
+                    $(this).css('backgroundColor', 'yellow');       // 화살표 함수에서는 this를 사용할 수 없다.
+                    })
+                .on('mouseout',function(){          // this를 사용하려면 화살표 함수를 사용하면 안됨.
+                    $(this).css('backgroundColor', 'white');
+                });
+
+            $('h1').click(function(){               // h1 태그 공통된 이벤트.
+                alert($(this).text());
+            });
+
+            $('body > h1:nth-child(3)')
+                .on('mouseover', function(e) {       // .on() --> .addEventListener()와 용도가 같다.  // key 이벤트에는 event를 반드시 써야한다.!!!
+                // 화살표 함수에서는 this를 사용할 수 없다.
+                $(this).css('backgroundColor', 'cyan');
+                })
+                .on('mouseout',function(){          // this를 사용하려면 화살표 함수를 사용하면 안됨.
+                    $(this).css('backgroundColor', 'white');
+                })
+                .on('click', function() {           // Header 3의 개별 이벤트.
+                    alert('해더 3입니다.')
+                });
+        });
+    </script>
+</head>
+<body style="margin: 40px;">
+    <h1>Header 1</h1>
+    <h1>Header 2</h1>
+    <h1>Header 3</h1>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체생성</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(() => {
+            // 객체생성 (태그 열고 받으면 된다!)
+            $('<h1></h1>').text('객체생성').appendTo('body');
+            // $('<h2></h2>').text('객체생성2').prependTo('h1');
+            for(let i = 0; i < 256; i++){
+                $('<div></div>').css({ height:'3px', marginLeft:'20px', backgroundColor:`rgb(${255-i}, ${255-i}, ${255-i})`}).appendTo('body');
+            }
+        });
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

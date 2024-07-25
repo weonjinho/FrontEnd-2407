@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>키보드 이벤트</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+    <style>
+        input, div{padding: 5px; margin: 5px;}
+    </style>
+    <script>
+        $(document).ready(() => {
+            $('input')
+                .on('keyup', function(e){               // 글자를 업력할 때 마다.
+                    $('#keyup').text($(this).val());    // $(this).val() : input 태그의 입력된 값을 가져오는 방법.input 태그는 .val()로 값을 가져온디.
+                    // $('#keyup').text(e.keyCode);     // 현재 입력한 keyCode 값을 확인하는 방법.
+                })
+                .on('change',function(){
+                    $('#change').text($(this).val());    // 엔터키를 쳤을때.
+                })
+        });
+    </script>
+</head>
+<body style="margin: 40px;">
+    입력: <input type="text">
+    <hr>
+    <div>
+        글자를 입력할 때마다:
+        <span id="keyup"></span>
+    </div>
+    <div>
+        글자를 다 입력하고 Enter를 쳤을때:
+        <span id="change"></span>
+    </div>
+</body>
+</html>

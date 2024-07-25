@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트제거</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(() => {
+            const handler = function(){
+                $('<h1></h1>')      // 새로 만든 태그에 이벤트 추가.
+                    .text($(this).text())
+                    .css('backgroundColor', 'yellow')
+                    .on('click',handler)
+                    .appendTo('body');
+                // 기존 태그에서는 이벤트를 제거한다.
+                $(this)
+                    .css('backgroundColor', 'white')
+                    .off('click');   // click 이벤트를 저리하지 마라.
+            }
+            $('h1').click(handler);
+        });
+    </script>
+</head>
+<body style="margin: 40px;">
+    <h1 style="background-color: yellow;">새로 만든 줄에서만 이벤트 처리 가능</h1>
+</body>
+</html>
