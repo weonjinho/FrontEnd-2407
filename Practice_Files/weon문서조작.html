@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문서조작</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(() =>{
+            $('#first').text(`text()메소드로 <span style = "color:red">변경</span>`);
+            // $('h1').html(`text()메소드로 <span style = "color:red">변경2</span>`);   // 같은 <h1> 태그면 overwrite됨.
+            $('h1:nth-child(2)').html(`text()메소드로 <span style = "color:red">변경2</span>`);
+        })
+    </script>
+</head>
+<body style="margin: 40px;">
+    <h1 id="first">First <span style="color: brown;">Header</span></h1>
+    <h1>Second <span style="color: brown;">Header</span></h1>
+    <h1>Third Header</h1>
+</body>
+</html>
