@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location 객체</title>
+    <script>
+        function delayedMove(){
+            let imgTag = document.querySelector('img');
+            imgTag.src = 'img/please_wait.gif';
+            imgTag.alt = 'please_wait';
+            // 일정 시간 후 페이지이동. setTimeout() (exp:3초)
+            setTimeout(() => {
+                location.href='https://hanbit.co.kr/academy/';
+            }, 3000); 
+        }
+        function displayInfo(){
+            let attr = `href:${location.href}<br>`;
+            // location.href는 JavaScript에서 현재 웹 페이지의 URL을 나타내는 속성입니다. 
+            // 이 속성을 사용하여 현재 페이지의 URL을 가져오거나, 다른 페이지로 이동할 수 있습니다.
+            // 현재 URL 가져오기: location.href를 통해 현재 페이지의 전체 URL을 문자열로 가져올 수 있습니다.
+            // 페이지 이동: location.href = "https://example.com";와 같이 설정하면 지정한 URL로 페이지가 이동합니다.
+            
+            attr += `hostname:${location.hostname}<br>`;
+            // location.hostname은 JavaScript에서 현재 웹 페이지의 호스트 이름(도메인 이름 또는 IP 주소)을 나타내는 속성입니다. 
+            // 이 속성은 URL에서 프로토콜(http:// 또는 https://)과 포트 번호를 제외한 도메인 이름 부분을 반환합니다.
+            // 예를 들어, 현재 URL이 https://www.example.com:8080/path/page.html인 경우, location.hostname은 www.example.com을 반환합니다. 
+
+            attr += `port:${location.port}<br>`;
+            // location.port는 JavaScript에서 현재 웹 페이지의 URL에 사용된 포트 번호를 나타내는 속성입니다. 
+            // 이 값은 URL의 호스트 이름 뒤에 콜론(:)으로 구분되어 나타나는 포트 번호입니다.
+            // 예를 들어, URL이 https://www.example.com:8080/path/page.html인 경우, location.port의 값은 "8080"이 됩니다. 
+            
+            attr += `pathname:${location.pathname}<br>`;
+            // location.pathname은 JavaScript에서 현재 웹 페이지의 URL 중 호스트 이름과 포트 번호를 제외한 경로(path)를 나타내는 속성입니다. 
+            // 이 값은 URL의 도메인 이름 뒤에서 시작하며, 슬래시(/)로 구분된 디렉토리 구조와 페이지 이름을 포함합니다.
+            // 예를 들어, URL이 https://www.example.com/folder/page.html인 경우, location.pathname의 값은 "/folder/page.html"이 됩니다. 
+            
+            document.querySelector('h3').innerHTML = attr;
+
+            // URL 프로토콜(http:// 또는 https://)
+            // TCP/IP : localhost:8080/demo  포트번호/pathname
+            // 개인 PC : localhost ( IP : 127.0.0.1 )
+            // Internet (TCP/IP)
+            // MySQL : localhost : 3306 (포트번호)
+        }
+    </script>
+</head>
+<body style="margin: 40px;">
+    <button onclick="location.href='https://hanbit.co.kr/academy/'">사이트 즉사 이동</button><br>
+    <button onclick="delayedMove()">사이트 지연 이동</button><br>
+    <button onclick="history.forward()">앞으로</button>
+    <button onclick="history.back()">뒤로</button>
+    <button onclick="history.go(-1)">뒤로(go(-1))</button>
+    <button onclick="displayInfo()">정보 표시</button>
+    <hr>
+    <img>
+    <h3></h3>
+</body>
+</html>

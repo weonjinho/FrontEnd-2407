@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>할 일 목록</title>
+    <style>
+        input, button, div {padding: 5px; margin: 5px;};
+    </style>
+    <script>
+        window.onload = () => {
+            const input = document.querySelector('#todo');
+            const addButton = document.querySelector('#add-button');
+            const todoList = document.querySelector('#todo-list');
+            let keyCount = 0;
+
+            // list 추가하는 함수.
+            const addTodo = () => {
+                // 아무것도 입력하지 않았을때.
+                if(input.value.trim() === ''){
+                    alert('올바르게 입력하세요.');
+                    return;
+                }
+                // " checkbox + text + '제거하기'버튼 " 구조 만들기.(태그생성 & 속성부여)
+                const item = document.createElement('div');
+                const checkBox = document.createElement('input');
+                const text = document.createElement('span');
+                const deleteButton = document.createElement('button');
+                const key = keyCount++;
+
+                /*
+                    만드는 순서 :
+                    1. list 항목별 구분하는 key값.
+                    2. checkbox
+                    3. text
+                    4. '제거하기' 버튼
+                */ 
+                item.setAttribute('data-key', key);
+                item.appendChild(checkBox);
+                item.appendChild(text);
+                item.appendChild(deleteButton);
+                todoList.appendChild(item);
+
+                // input 박스의 type = "checkbox" 만들기.
+                /*
+                    checkbox 만드는 순서 :
+                    1. <input>에 'checkbox' type 부여.
+                    2. 체크상태가 변경시 발생하는 이벤트를 추가. ( line-through )
+                */ 
+                checkBox.type='checkbox';
+                checkBox.addEventListener('change', e => {
+                    item.style.textDecoration = e.target.checked ? "line-through" : '' ;
+                });
+
+                // text 부분에서 할 일 : 내용 추가. ( 공백 제거 후 추가. )
+                text.innerHTML = input.value.trim();
+
+                // deleteButton 만들기
+                // 1. deleteButton에 innerText 내용 추가.
+                // 2. deleteButton에 클릭 이벤트 추가. ---> 'item' 을 제거하는 이벤트.
+                deleteButton.innerText = '제거하기';
+                deleteButton.addEventListener('click', () => {
+                    removeTodo(key);    // list 항목의 key 값으로 삭제.
+                });
+
+                // 입력상자 양식의 내용을 비운다.
+                input.value = '';
+            }
+
+            // list 항목 제거하는 함수
+            const removeTodo = key => {
+                const item = document.querySelector(`[data-key="${key}"]`);
+                todoList.removeChild(item);
+            };
+
+            // "추가하기" 버튼 누르면 작동하는 이벤트 추가.
+            addButton.addEventListener('click', addTodo);   // 주의 : 이 때는 함수의 괄호 없다.
+            input.addEventListener('keyup', e => {          // 입력창에 keyup 이벤트 연결. 
+                if(e.keyCode === 13){
+                    console.log(input.value, input.value.length);   // 디버깅 코드.
+                    addTodo();                              // 함수를 개별 호출할때는 괄호 꼭 쓴다.
+                }
+            });
+
+
+
+        }
+    </script>
+</head>
+<body style="margin: 40px;">
+    <h1>할 일 목록</h1>
+    <input type="text" id="todo">
+    <button id="add-button">추가하기</button>
+    <div id="todo-list"></div>
+</body>
+</html>

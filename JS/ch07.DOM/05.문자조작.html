@@ -30,11 +30,11 @@
         $(document).ready(()=>{
             function changeText(){
                 // alert($('body > button:nth-child(2)').text());
-                $('button').eq(0).click(changeText).text();
+                $('button').eq(0).click('changeText()').text();
             }
             function escapeText(){
                 // alert($('body > button:nth-child(3)').text());
-                $('button').eq(1).click(escapeText).text();
+                $('button').eq(1).click(escapeText()).text();
             }
         });
 

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>할 일 목록</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <style>
+        input, button, div {padding: 5px; margin: 5px;};
+    </style>
+    <script>
+       $(document).ready(() => {
+            let keyCount = 0;
+            const addTodo = () => {
+                if($('#todo').val().trim() === ''){
+                    alert('올바르게 입력하세요.');
+                    return;
+                }
+                const key = keyCount++;
+                alert(key);
+                $('<div></div>').attr('id','item');
+                $('#item').attr('data-key','key');            // list 항목 번호 key 속성 추가.
+                $('<input></input>').attr('id','checkBox');
+                $('<span></span>').attr('id','inputedText');
+                $('<button></button>').attr('id','deleteButton');
+
+                $('#item').append($('#checkBox'));
+                $('#item').append($('#inputedText'));
+                $('#item').append($('#deleteButton'));
+                $('#todo-list').append($('#item'));
+                alert('222');
+                // checkbox
+                $('#checkBox').attr('type','checkbox');
+                $('#checkBox').on('change', e =>{
+                    $('#item').css('textDecoration', e => {
+                        alert('333');
+                        e.target.checked ? 'line-through' : '';
+                    });
+                });
+                // text 
+                $('#inputedText').html($('#todo').val().trim());
+                // deleteButton
+                $('#deleteButton').text('제거하기');
+                $('#deleteButton').on('click', () => {
+                    removeTodo(key);
+                });
+                // $('#todo').val() = '';
+                $('#todo').val('') ;
+            }
+
+            const removeTodo = key => {
+                $('#todo-list').removeChild(`[data-key='${key}']`);
+            };
+            $('#add-button').on('click', addTodo);
+            $('#todo').on('keyup', e => {
+                if(e.keyCode === 13){
+                    console.log($('#todo').val(), $('#todo').val().length);
+                    addTodo();
+                }
+            })
+
+
+       });
+    </script>
+</head>
+<body style="margin: 40px;">
+    <h1>할 일 목록</h1>
+    <input type="text" id="todo">
+    <button id="add-button">추가하기</button>
+    <div id="todo-list"></div>
+</body>
+</html>
