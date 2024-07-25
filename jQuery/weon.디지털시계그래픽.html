@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디지털시계_jQuery버전</title>
+    <style>
+        img{width: 100px;}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        function twoDigit(num){
+            return num < 10 ? '0' + num : String(num);
+        }
+        function myDate(now){
+            const week = '일월화수목금토'.split('');
+            return `${now.getFullYear()}-${twoDigit(now.getMonth() + 1)}-${twoDigit(now.getDate())}(${week[now.getDay() % 7]})`;
+        }
+        function myTime(now){
+            return `${twoDigit(now.getHours())}:${twoDigit(now.getMinutes())}:${twoDigit(now.getSeconds())}`;
+        }
+        $(document).ready(() => {
+            setInterval(() => {
+                let now = new Date();
+                let dateStr = myDate(now);
+                $('#date').html(dateStr);
+                let timeStr = myTime(now);
+                $('#time').html(timeStr);
+                // Array 사용해서 반복문 줄이기.
+                // $('#h1').attr({src:`img/${timeStr[0]}.svg`})
+                // $('#h2').attr({src:`img/${timeStr[1]}.svg`})
+                // $('#m1').attr({src:`img/${timeStr[3]}.svg`})
+                // $('#m2').attr({src:`img/${timeStr[4]}.svg`})
+                // $('#s1').attr({src:`img/${timeStr[6]}.svg`})
+                // $('#s2').attr({src:`img/${timeStr[7]}.svg`})
+                for(let i = 1; i<=2;i++){
+                    for(let k=0;k<timeStr.length;k++){
+                        if(i==k+1){
+                            if(k==2 || k==5){
+                                continue;
+                            }
+                        $(`#h${i}`).attr({src:`'img/${timeStr[k]}.svg'`})
+                        }
+                        if(i==k+2){
+                            if(k==2 || k==5){
+                                continue;
+                            }
+                        $(`#m${i}`).attr({src:`'img/${timeStr[k]}.svg'`})
+                        }
+                        if(i==k+5){
+                            if(k==2 || k==5){
+                                continue;
+                            }
+                        $(`#s${i}`).attr({src:`'img/${timeStr[k]}.svg'`})
+                        }                        
+                    }
+                }
+            },1000)
+        });
+    </script>
+</head>
+<body style="margin: 40px;">
+    <h4 id="date"></h4>
+    <h4 id="time"></h4>
+    <hr><br>
+    <img id="h1">
+    <img id="h2">
+    <img src="img/Colon.jpg">
+    <img id="m1">
+    <img id="m2">
+    <img src="img/Colon.jpg">
+    <img id="s1">
+    <img id="s2">
+</body>
+</html>
