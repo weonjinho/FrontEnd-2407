@@ -8,7 +8,8 @@
     <script>
         $(document).ready(() => {
             const handler = function(){
-                $('<h1></h1>')      // 새로 만든 태그에 이벤트 추가.
+                // 새로 만든 태그에 이벤트 추가.
+                $('<h1></h1>')      
                     .text($(this).text())
                     .css('backgroundColor', 'yellow')
                     .on('click',handler)
