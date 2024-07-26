@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디지털시계_jQuery</title>
+    <style>
+        img{width: 60px;}
+        #d10, #d11, #d12{
+            font-size: 3em;
+            /* 
+                <span> 태그 font-size 조절:
+                0.5em:8px; 
+                1em:16px; 
+                2em:32px; 
+                3em:48px
+             */
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        function twoDigit(num){
+            return num < 10 ? '0' + num : String(num);
+        }
+        function myDate(now){
+            const week = '일월화수목금토'.split('');
+            return `${now.getFullYear()}-${twoDigit(now.getMonth()+1)}-${twoDigit(now.getDate())}(${week[now.getDay()%7]})`;
+            // getFullYear() : 년도를 출력하는 함수.  2019
+            // getMonth() : 월을 출력하는 함수. 단, 0부터 시작합니다. 1월 -> 0
+            // getDate() : 날짜를 출력하는 함수입니다.  27
+            // getDay() : 요일을 출력하는 함수입니다. 월요일:1, 화요일:2, 수요일:3, 목요일:4, 금요일:5, 토요일:6, 일요일:7
+            // 나머지연산 계산법 : 
+            // Tip: 
+            // a 가 b 보다 작으면 나머지는 a 자체가 됩니다. exp) 5%7 --> 나머지 : 5
+            // a 을 a로 나누면 나머지는 0 입니다.
+        }
+        function myTime(now){
+            return `${twoDigit(now.getHours())}:${twoDigit(now.getMinutes())}:${twoDigit(now.getSeconds())}`;
+        }
+        $(document).ready(()=>{
+            setInterval(() => {
+                let now = new Date();
+                let dateStr = myDate(now);
+                $('#date').text(dateStr);   // 2024-07-26(금)
+                let timeStr = myTime(now);
+                $('#time').text(timeStr);   // 16:33:02
+                // 날짜&요일
+                for(let k = 0; k< dateStr.length;k++){
+                    if(k==4 || k==7){       // 기호의 위치(index).
+                        continue;
+                    }else if(k==10){        // 요일의 시작위치(index).
+                        $(`#d${k}`).text(dateStr[k])
+                    }else if(k==11){
+                        $(`#d${k}`).text(dateStr[k])
+                    }else if(k==12){
+                        $(`#d${k}`).text(dateStr[k])
+                    }
+                    $(`#d${k}`).attr('src',`img/${dateStr[k]}.svg`);
+                }
+                // 시간
+                for(let i = 0; i< timeStr.length;i++){
+                    if(i==2 || i==5){
+                        continue;
+                    }
+                    $(`#t${i}`).attr('src', `img/${timeStr[i]}.svg`);
+                }
+            }, 1000);
+        });
+    </script>
+</head>
+<body style="margin-right: 40px;">
+    <h4 id="date"></h4>
+    <h4 id="time"></h4>
+    <hr>
+    <!-- id 값은 중복안되는 조건하에 최대한 코딩이 편하게 만들다. -->
+    <!-- 날짜&요일 -->
+    <img id="d0">
+    <img id="d1">
+    <img id="d2">
+    <img id="d3">
+    <img src="img/hyphen_img.png">
+    <img id="d5">
+    <img id="d6">
+    <img src="img/hyphen_img.png">
+    <img id="d8">
+    <img id="d9">
+    <!-- 여기서는 .text()를 사용한다. -->
+    <span id="d10"></span>
+    <span id="d11"></span>
+    <span id="d12"></span>
+    <br>
+    <!-- 시간 -->
+    <img id="t0">
+    <img id="t1">
+    <img src="img/Colon.jpg">
+    <img id="t3">
+    <img id="t4">
+    <img src="img/Colon.jpg">
+    <img id="t6">
+    <img id="t7">
+</body>
+</html>
