@@ -9,26 +9,33 @@
     </style>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script>
-        var count = 3;
+        // count 시작 숫자.
+        var count = 3;              
+        // 보여줄 이미지 태그 생성 후 원하는 속성 부여.
         function disp(num){
-            $('<img></img>')
+            $('<img></img>')        // <img>생성
                 .attr({
-                    src: `../JS/ch07.DOM/img/${num}.svg`,
-                    width:500,
-                    id:'number',
+                    src: `../JS/ch07.DOM/img/${num}.svg`,   // src 속성값 부여.
+                    width:500,      // width 값 부여
+                    id:'number',    // id 값 부여
                 })
                 .css('margin','30px')
-                .appendTo($('#result'));
+                .appendTo($('#result'));    // (child).appendTo(parent);
         }
 
+        // 생성한 카운트다운 <img> 태그 제거.
         function hide(){
-            $('#number').remove();
+            // 카운트다운 이미지를 .remove() 하는 방식으로 <img id = "number"> 태그 자체를 없앤다.
+            $('#number').remove();  
+            // $('#number').hide();  
+            // 의문 : .hide() / .remove() 의 차이?
         }
 
+        // 렌던 숫자 배열 생성
         function getRandomNumbers(num){
             // 1부터 num까지의 숫자를 포함하는 배열 생성.
             let numbers = Array.from({length:num},(_, index) => index + 1);
-
+            alert(numbers);
             // 배열을 무작위로 섞기.
             for(let i = numbers.length - 1; i>0;i--){
                 const j = Math.floor(Math.random()*(i+1));
@@ -37,7 +44,7 @@
             return numbers;
         }
 
-
+        // 생성한 렌덤 
         function randomOrder(){
             let number = parseInt($('input').val());  // 발표할 팀
             let result = getRandomNumbers(number);
