@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로컬스토리지_응용_내정보</title>
+    <script>
+        window.onload= () => {
+            let myInfo = {name:'원진호', uid:'weonjinho', age:'26', gender:'male'};
+            // 겍체를 JSON 문자열로 변환.
+            // setItem()
+            // getItem()
+            localStorage.setItem('storeMyInfo', JSON.stringify(myInfo));
+            let readMyInfo = JSON.parse(localStorage.getItem('storeMyInfo'));
+            const {name, uid, age, gender} = readMyInfo;    // 필수 추가!!!
+            let myGender = null;
+            if(`${gender}` == 'male'){
+                myGender = '남자';
+            }else if(`${gender}` == 'female'){
+                myGender = '여자';
+            }
+            document.querySelector('#showMyName').innerHTML = `${name}`;
+            document.querySelector('#showMyId').innerHTML = `${uid}`;
+            document.querySelector('#showMyAge').innerHTML = `${age}`;
+            document.querySelector('#showMyGender').innerHTML = `${myGender}`;   // 'myGender'의 타입을 const 가 아닌, let으로 선언해야한다.
+        };
+    </script>
+</head>
+<body style="margin: 40px;">
+    <h4 id="showMyName"></h4>
+    <h4 id="showMyId"></h4>
+    <h4 id="showMyAge"></h4>
+    <h4 id="showMyGender"></h4>
+</body>
+</html>

@@ -13,7 +13,7 @@
         }
         function myDate(now){
             const week = '일월화수목금토'.split(''); // JS에서는 문자열을 배열로 사용할 수 있다.
-            alert(week);
+            // alert(week);
             let weekStr = `${week[now.getDay()%7]}`;
             return `${now.getFullYear()}-${twoDigit(now.getMonth()+1)}-${twoDigit(now.getDate())}(${weekStr})`;   // Hours, Minutes, Seconds 주의!
         }

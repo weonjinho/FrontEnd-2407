@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디지털시계</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        function twoDigit(num){
+            return num < 10 ? '0' + num : String(num);
+        }
+        function myDate(date){
+            const week = `일월화수목금토`.split('');
+            return `${date.getFullYear()}-${twoDigit(date.getMonth()+1)}-${twoDigit(date.getDate())}(${week[date.getDay()]})`;
+        }
+        function myTime(date){
+            return `${date.getHours()}:${twoDigit(date.getMinutes())}:${twoDigit(date.getSeconds())}`;
+        }
+        $(document).ready(()=>{
+            setInterval(() => {
+                let date = new Date();
+                let dateStr = myDate(date);
+                $('#nowDate').text(dateStr);
+                let timeStr = myTime(date);
+                $('#nowTime').text(timeStr);
+            }, 1000);
+        })
+    </script>
+</head>
+<body>
+    <span id="nowDate"></span>&nbsp;&nbsp;
+    <span id="nowTime"></span>
+</body>
+</html>
