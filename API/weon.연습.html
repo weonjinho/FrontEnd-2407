@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="key.js"></script>
+    <script>
+        window.onload = () => {
+            let place = '경기도청';
+            let roadBaseUrl = 'https://business.juso.go.kr/addrlink/addrLinkApi.do';
+            let kakaoBaseUrl = '';
+        }
+    </script>
+</head>
+<body style="margin: 40px;">
+    <h1>도로명주소 api + 카카오로컬 api + 지도</h1>
+    <hr>
+    <h3>수원시청</h3>
+    <ul>
+        <li>도로명주소: <span id="place"></span></li>
+        <li>위도: <span id="lat"></span></li>
+        <li>경도: <span id="lon"></span></li>
+    </ul>
+    <div id="map" style="width: 600px; height: 400px; margin-top: 20px;"></div>
+</body>
+</html>
