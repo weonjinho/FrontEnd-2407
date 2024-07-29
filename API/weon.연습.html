@@ -6,10 +6,14 @@
     <title>Document</title>
     <script src="key.js"></script>
     <script>
+        // kakaoScript 생성 & <head>에 자식 태그로 추가.
         window.onload = () => {
-            let place = '경기도청';
-            let roadBaseUrl = 'https://business.juso.go.kr/addrlink/addrLinkApi.do';
-            let kakaoBaseUrl = '';
+            let kakaoScript = document.createElement('script');
+            // 카카오 API 키 준비
+            kakaoScript.src = `http://dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoJsKey}&autoload=false`;
+            kakaoScript.onload =()=>{
+                
+            }
         }
     </script>
 </head>
