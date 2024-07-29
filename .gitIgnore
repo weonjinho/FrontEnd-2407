@@ -1,0 +1,11 @@
+# github에 업로드를 ignore하는 파일
+# 1. 데이터 사이즈가 100mb 이상의 데이터.
+# 2. 
+
+# 위치 : FrontEnd 자식 dir
+
+# Key file은 못올리게 방지
+key.js
+
+# diretory를 못올리게 하려면
+# dir/
