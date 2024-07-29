@@ -6,6 +6,6 @@
 
 # Key file은 못올리게 방지
 key.js
-
+# API/key.js
 # diretory를 못올리게 하려면
 # dir/

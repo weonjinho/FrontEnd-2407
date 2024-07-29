@@ -14,7 +14,7 @@
             let params2 = `keyword=${encodeURIComponent(place)}`; // 한글은 반드시 인코딩 해주어야 입력된다.
             let params3 = `confmKey=${roadAddrKey}&resultType=json`;
             let roadUrl = `${roadBaseUrl}?${params1}&${params2}&${params3}`;
-            alert(roadUrl);
+            // alert(roadUrl);
             // https://business.juso.go.kr/addrlink/addrLinkApi.do?currentPage=1&countPerPage=5&keyword=경기도청&confmKey=승인키&resultType=json
             // 검색API_활용_가이드 : 샘풀 데이터보기 [JSON]
             const kakaoScript = document.createElement('script');

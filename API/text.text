@@ -1,0 +1,18 @@
+<input>로 지명 입력을 받아서 자도 뀌우기.
+1. kakaoScript 생성 & kakao API키의 URL를 kakaoScript.src에 대입.
+2. kakao지도가 완전히 로드되면 빈 함수를 실행하라.
+3. kakaoScript를 head 뒤에 추가.
+
+handleMap() 함수 선언.
+1. 사용자가 입력한 값을 받아서 place에 대입.
+2. 도로명주소 url준비. (감색api가이드 참고)
+3. fetch(도로명url).then(response => response.json()).then(result => {
+    도로명 주소 가져오기.
+    도로명주소 출력.
+    kakaoUrl에 도로명 주소 입력.
+    header에 kakao API Key 입력
+})
+4. fetch(kakaoUrl주소, 인증키).then(response=> response.json()).then(result => {
+    x값,y값
+    
+})

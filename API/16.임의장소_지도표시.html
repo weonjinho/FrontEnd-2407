@@ -10,10 +10,11 @@
     <script src="key.js"></script>
     <script>
         window.onload = () => {
+            // kakaoScript 생성 & API키 URL를 src에 대입.
             const kakaoScript = document.createElement('script');
             kakaoScript.src = `http://dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoJsKey}&autoload=false`;
             kakaoScript.onload = () => {
-                kakao.maps.load(()=>{ });
+                kakao.maps.load(()=>{ }); // "kakao지도가 완전히 로드된면 빈 함수를 실행하라"
             };
             document.head.appendChild(kakaoScript);
         };
@@ -30,11 +31,11 @@
             document.getElementById('place').innerHTML = place;
             fetch(roadUrl)
                 .then(response => response.json())      // JSON 응답을 파싱
-                .then(result => {                       // 파싱된 데이터를 처리.
+                .then(result => {                       // 파싱된 데이터를 처리.    // result 객체 내에 있는 results 속성에 접근합니다
                     let roadAddr = result.results.juso[0].roadAddr;     // 도로명주소 가져오기
                     document.getElementById('roadAddr').innerHTML = roadAddr;   // 도로명주소 출력.
-
-                    let kakaoUrl = `${kakaoBaseUrl}?query=${encodeURIComponent(roadAddr)}`; // kakao에 도로명주소 입력.
+                    console.log(result);
+                    let kakaoUrl = `${kakaoBaseUrl}?query=${encodeURIComponent(roadAddr)}`; // kakaoUrl에 도로명주소 입력.
                     let header = { Authorization: `KakaoAK ${kakaoRestKey}` };  
                     //  'Authorization' : 서버는 이 헤더를 사용하여 클라이언트가 자신을 인증하는 방법을 전달받습니다.
                     // KakaoAK : 카카오 API에서 요구하는 인증 방식 중 하나, 'Kakao Application Key'의 줄임말로 볼수 있습니다.
@@ -52,13 +53,15 @@
                     // 'result.documents[0].y'와 'result.documents[0].x'는 JSON 데이터에서 필요한 좌표 정보를 추출하는 부분입니다. 
                     // Kakao API에서 반환하는 좌표 데이터는 'documents' 배열에 포함되어 있습니다.
                     // 4. 
-                    fetch(kakaoUrl, { headers:header })     
+                    fetch(kakaoUrl, { headers:header })     // kakaoUrl주소 & 인증키
                         .then(response => response.json())  
                         .then(result => {
                             let lat = parseFloat(result.documents[0].y);
                             let lon = parseFloat(result.documents[0].x);
-                            document.getElementById('lat').innerHTML = '' + lat;
-                            document.getElementById('lon').innerHTML = String(lon);
+                            console.log("----");
+                            console.log(result);
+                            document.getElementById('lat').innerHTML = '' + lat; // 실수를 문자열로 전환
+                            document.getElementById('lon').innerHTML = String(lon); // 실수를 문자열로 전환
                             drawMap(place,lat,lon);
                         })
                         .catch(error => {
