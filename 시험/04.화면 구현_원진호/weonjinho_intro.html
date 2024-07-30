@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>자기소개</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet"/>
+    <style>
+        * {font-family: "Noto Sans KR", sans-serif;} /* 한글폰트 */
+        a{text-decoration: none; color: inherit;}
+        th{
+            text-align: center;
+            width: 14.28%;
+        }
+        td{
+            height: 120px;
+        }
+        .sticky {
+            position: sticky;
+            top: 150px;
+        }
+        #nowDate{font-size: 16px;}
+        #nowTime{font-size: 16px;}
+        #myBirthPlace{width: 70px; height: 15px;font-size: 10px;vertical-align: bottom;}
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/fdb840a8cc.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="key.js"></script>
+    <script>
+        // 디지털시계 표시
+        function twoDigit(num){
+            return num < 10 ? '0' + num : String(num);
+        }
+        function myDate(date){
+            const week = `일월화수목금토`.split('');
+            return `${date.getFullYear()}-${twoDigit(date.getMonth()+1)}-${twoDigit(date.getDate())}(${week[date.getDay()]})`;
+        }
+        function myTime(date){
+            return `${date.getHours()}:${twoDigit(date.getMinutes())}:${twoDigit(date.getSeconds())}`;
+        }
+        function handler(){
+            let inputEmail = document.getElementById('myChangedEmail').value;
+            let inputGithub = document.getElementById('myChangedGithub').value;
+            let inputInsta = document.getElementById('myChangedInsta').value;
+            let inputAddr = document.getElementById('myChangedAddr').value;
+            document.getElementById('myEmail').innerText = inputEmail;
+            document.getElementById('myGithubId').innerText = inputGithub;
+            document.getElementById('myInstagramId').innerText = inputInsta;
+            document.getElementById('myLivingAddr').innerText = inputAddr;
+            
+        };
+        window.onload= () => {
+            // 내 정보 가져오기
+            let myInfo = {name:'원진호', uid:'weonjinho', age:'26', gender:'male'};
+            localStorage.setItem('storeMyInfo', JSON.stringify(myInfo));
+            let readMyInfo = JSON.parse(localStorage.getItem('storeMyInfo'));
+            const {name, uid, age, gender} = readMyInfo;    
+            let myGender = null;
+            if(`${gender}` == 'male'){
+                myGender = '남자';
+            }else if(`${gender}` == 'female'){
+                myGender = '여자';
+            }
+            document.querySelector('#welcomeMessage').innerHTML= `${name} 님 환영합니다.`;
+            // 디지털 시계
+            setInterval(() => {
+                let date = new Date();
+                let dateStr = myDate(date);
+                document.querySelector('#nowDate').innerHTML = dateStr;
+                let timeStr = myTime(date);
+                document.querySelector('#nowTime').innerHTML = timeStr;
+            }, 1000);
+
+            // Aside 수정 기능.
+            // 오늘의 상태 수정
+            document.getElementById('changeAsideContent01').addEventListener('click',()=>{
+                let inputValue= window.prompt('오늘의 상태','여기에 입력하세요.');
+                document.getElementById('asideContent01').innerText = inputValue;
+            })
+            // // 내 프로필 내용 수정 ( Edit Profile )
+            document.getElementById('editMyProfile').addEventListener('click',handler);
+
+
+
+
+            // 출생지 지도보기
+            const kakaoScript = document.createElement('script');
+            kakaoScript.src = `http://dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoJsKey}&autoload=false`;
+            kakaoScript.onload = () => {
+                kakao.maps.load(async () => {    
+                    let {place,roadAddr,lat,lon} = await getCoord('구운동');
+                    drawMap(place,lat,lon);
+                }); 
+            };
+            document.head.appendChild(kakaoScript);
+        };
+        async function getCoord(place){     
+            try {
+                const roadBaseUrl = 'https://business.juso.go.kr/addrlink/addrLinkApi.do';
+                const kakaoBaseUrl = 'https://dapi.kakao.com/v2/local/search/address.json';
+                const params1 = 'currentPage=1&countPerPage=5';
+                const params2 = `keyword=${encodeURIComponent(place)}`;
+                const params3 = `confmKey=${roadAddrKey}&resultType=json`;
+                const roadUrl = `${roadBaseUrl}?${params1}&${params2}&${params3}`;
+
+                let response = await fetch(roadUrl);    
+                let result = await response.json();     
+                let roadAddr = result.results.juso[0].roadAddr;
+
+                let kakaoUrl = `${kakaoBaseUrl}?query=${encodeURIComponent(roadAddr)}`;
+                let header = { Authorization: `KakaoAK ${kakaoRestKey}` };
+                response = await fetch(kakaoUrl, { headers:header });
+                result = await response.json();
+                let lat = parseFloat(result.documents[0].y);
+                let lon = parseFloat(result.documents[0].x);
+                return {place,roadAddr,lat,lon};     
+            } catch (error) {
+                console.log(error);
+                return {place, roadAddr:null, lat:null, lon:null};
+            }
+        }
+        function drawMap(place, lat,lon){
+            let container = document.getElementById('map'); 
+            let position = new kakao.maps.LatLng(lat, lon);
+            let options = {
+                center:position,    
+                level:4            
+            };
+            let map = new kakao.maps.Map(container, options);
+            let marker = new kakao.maps.Marker({    
+                map:map,
+                position:position  
+            });
+            let infowindow = new kakao.maps.InfoWindow({
+                content:`<div style="padding:5px;">${place}</div>` 
+            });
+            kakao.maps.event.addListener(marker, 'mouseover', () => {
+                infowindow.open(map, marker);
+            });
+            kakao.maps.event.addListener(marker,'mouseout', ()=>{
+                infowindow.close();
+            });
+        }
+    </script>
+    <!-- </script> -->
+</head>
+<body>
+    <div class="container-fluid bg-dark text-center fixed-top" style="height: 50px;">
+            <!-- <h1>자기소개</h1> -->
+            <img src="image2/my-logo.png" alt="Logo" style="height: 50px;">
+    </div>
+        <!-- navbar 부분 -->
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top"  style="width: 100%;margin-top: 50px;">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+                <a class="navbar-brand mx-5" href="#">
+                    <img src="image2/my-logo.png" alt="Logo" style="height: 40px;">
+                </a>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item ms-3">
+                    <a class="nav-link active" href="#birth_place"><i class="fa-solid fa-cake-candles me-1"></i>출생지</a>
+                </li>
+                <li class="nav-item ms-3">
+                    <a class="nav-link" href="#trip"><i class="fa-solid fa-plane me-1"></i>가고 싶은 곳</a>
+                </li>
+                <li class="nav-item ms-3">
+                    <a class="nav-link" href="#my_favorite_food"><i class="fa-solid fa-heart me-1"></i> 좋아하는 음식</a>
+                </li>
+                <li class="nav-item ms-3">
+                    <a class="nav-link" href="#my_hobby"><i class="fa-solid fa-plane me-1"></i>취미</a>
+                </li>
+            </ul>
+            <span class="navbar-text">
+                    <span id="nowDate"></span>
+                    <span id="nowTime"></span>
+            </span>
+            <span class="navbar-text" id="welcomeMessage">환영 메시지</span>
+        </div>
+        </nav>
+        </div>
+    </div>
+
+
+    <!-- 중앙 내용 부분 -->
+    <div class="container my-5">
+    <div class="row" style="height: 1500px;">
+        <div class="col-3 " style="font-size: 0.9rem;padding-top: 150px;" >
+            <div class="sticky">
+                <!-- 원행의 프로필 사진 -->
+                <img src="image2/profile_img.jpg" style="width: 80%;" class="rounded-circle mb-3" alt="프로필">
+                <div class="mt-2" >
+                    <span id="asideContent01">내일은 내일의 태양이 뜬다.</span>
+                    <a href="#"><span class="badge bg-secondary" id="changeAsideContent01" data-bs-toggle="modal" data-bs-target="#myModal01">수정</span></a>
+                </div>
+                <div class="mt-5">
+                    <i class="fa-regular fa-envelope me-2"></i><span id="myEmail">yuanzhenhao59@gmail.com</span><br>
+                    <i class="fa-brands fa-github me-2"></i>
+                    <a href="https://github.com/weonjinho" target="_blank" id="myGithubId">weonjinho</a><br>
+                    <i class="fa-brands fa-instagram me-2"></i>
+                    <a href="https://www.instagram.com/yuanzhenhao59/" id="myInstagramId">yuanzhenhao59</a><br>
+                    <i class="fa-solid fa-location-dot me-2"></i>
+                    <span id="myLivingAddr">수원시 팔달구</span>
+                    <a href="#"><span class="badge bg-primary ms-2" >날씨</span></a><br>
+                    <button type="button" class="btn btn-sm btn-outline-primary mt-2" id="editProfileBtn" data-bs-toggle="modal" data-bs-target="#myModal02">Edit Profile</button>
+                </div>
+            </div>
+        </div>
+    
+
+        <!-- Main 영역 : 페이지마다 이 부분만 채워줌 -->
+        <div class="col-9">
+            <div class="container">
+                <div class="row" id="birth_place" style="padding-top: 150px;">
+                    <h3><strong>내가 태어난 곳 : 수원 구운동</strong></h3><hr>
+                    <div class="row justify-content-center">
+                        <img src="image2/suwon_img.jpg" style="width: 500px; height: 200px;" alt="내가 태어난 곳">
+                    </div>
+                    <div class="row mb-5">
+                        <div class="row ">
+                            <span class="fs-4">수원시</span> 
+                        </div>
+                        <div class="row ms-0.5">
+                            &nbsp;&nbsp;&nbsp;안녕하세요? 제 이름은 원진호입니다. 저는 수원에서 테어나 2살 때 부모님과 함께 중국에서 약 20년간 생활했으며, 22년에 군 복무를 마치고. 직장 다니다가, 코딩에 관심이 많아서, 이번 과정에 지원하게 됐습니다. 비록 부족한 점은 많지만 하나씩 채워가는 마인드로 앞으로의 6개월간 과정에 임할 것이며, 이 과정을 통해 우리 모두 원하는 직장에 취업 성공했으면 좋겠습니다.                   
+                        </div>
+                        <ul>
+                            <span id="roadAddr"></span>
+                            <span id="lat"></span>
+                            <span id="lon"></span>
+                        </ul>
+                        <div id="map" style="width:600px;height:400px; margin-top: 20px;"></div>
+                    </div>
+                </div>
+                <div class="row" id="trip" style="padding-top: 150px;">
+                    <h3><strong>내가 가보고 싶은 곳</strong></h3><hr>
+                    <div class="row text-center d-flex justify-content-between mb-3">
+                        <div class="row justify-content-center"><h4><strong>일본</strong></h4></div>
+                        <div class="row ">
+                            <div class="row">
+                                <h4><strong>나카미세 상점가</strong></h4>
+                                <div class="container-fluid"> 
+                                    <!-- Carousel -->
+                                    <div id="demo" class="carousel slide" data-bs-ride="carousel">
+                                        <!-- Indicators/dots -->
+                                        <div class="carousel-indicators">
+                                            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                                            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                                            <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+                                        </div>
+                                        <!-- The slideshow/carousel -->
+                                            <div class="carousel-inner">
+                                                <div class="carousel-item active">
+                                                    <img src="image2/카미나리몬.jpg" class="d-block mb-3 " alt="카미나리몬" style="width: 100%;">
+                                                    <div class="carousel-caption ">
+                                                        <h4>카미나리몬</h4>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item active ">
+                                                    <img src="image2/아사쿠사.jpeg" class="d-block mb-3 " alt="아사쿠사" style="width: 100%;">
+                                                    <div class="carousel-caption">
+                                                        <h4>아사쿠사</h4>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item active ">
+                                                    <img src="image2/나카미세 상점가.jpg" class="d-block mb-3 " alt="나카미세 상점가" style="width: 100%;">
+                                                    <div class="carousel-caption">
+                                                        <h4>나카미세 상점가</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <!-- Left and right controls/icons -->
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon"></span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <!-- accordion 추가 -->
+                            <div id="accordion">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="btn" data-bs-toggle="collapse" href="#location_01">
+                                            <i class="fa-solid fa-location-dot me-1 "></i>위치 : 
+                                        </a>
+                                    </div>
+                                </div>
+                                <div id="location_01" class="collapse" data-bs-parent="#accordion">
+                                    <div class="card-body">
+                                            일본 도쿄도 다이토구 센소지와 카미나리몬 사이. 
+                                            <a href="https://url.kr/i189xk" target="_blank"><span class="badge bg-primary">지도 확인</span></a>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="btn" data-bs-toggle="collapse" href="#location_02">
+                                            <i class="fa-solid fa-thumbs-up me-1"></i>맛집 :  
+                                        </a>
+                                    </div>
+                                </div>
+                                <div id="location_02" class="collapse" data-bs-parent="#accordion">
+                                    <div class="card-body">
+                                        <div class="row ms-3">
+                                            추천 맛집 : 
+                                        </div>
+                                        <div class="row ms-3">
+                                            1. 아사쿠사 키비당고 아즈마 : 히야시말차, 키비당고.
+                                            <a href="https://url.kr/dytzt9" target="_blank"><span class="badge bg-primary">지도 확인</span></a>
+                                        <!-- </div>
+                                        <div class="row ms-3"> -->
+                                            2. 이모요캉 후나와 : 고구마 양갱.
+                                            <a href="https://url.kr/6crm4d" target="_blank"><span class="badge bg-primary">지도 확인</span></a>
+                                        <!-- </div>
+                                        <div class="row ms-3"> -->
+                                            3. FUNAWA : 각종 디저트.
+                                            <a href="https://url.kr/i189xk" target="_blank"><span class="badge bg-primary">지도 확인</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                </div>
+
+                <div class="row" id="my_favorite_food" style="padding-top: 150px;">
+                    <h3><strong>내가 좋아하는 음식</strong></h3><hr>
+                    <div class="row">
+                        <div class="container">
+                            <!-- Carousel -->
+                            <div id="demo2" class="carousel slide" data-bs-ride="carousel">
+                                <!-- Indicators/dots -->
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#demo2" data-bs-slide-to="0" class="active"></button>
+                                    <button type="button" data-bs-target="#demo2" data-bs-slide-to="1"></button>
+                                </div>
+                                <!-- The slideshow/carousel -->
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="image2/카레라이스4.jpg" class="d-block mb-3 " alt="카레라이스" style="width: 100%;">
+                                        <div class="carousel-caption ">
+                                            <h4>카레라이스</h4>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item active ">
+                                        <img src="image2/마라탕.jpg" class="d-block mb-3 " alt="마라탕" style="width: 100%;"><!-- 648x324-->
+                                        <div class="carousel-caption">
+                                            <h4>마라탕</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Left and right controls/icons -->
+                                <button class="carousel-control-prev" type="button" data-bs-target="#demo2" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon"></span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#demo2" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="my_hobby" style="padding-top: 150px;margin-bottom: 100px;">
+                    <h3><strong>취미</strong></h3><hr>
+                    <div class="row">
+                        <h4><strong>테니스</strong></h4>
+                        <div class="row mb-5">
+                            <div class="col-6">
+                                <div class="row text-center">
+                                    <img src="image2/테니스.jpg" alt="카레라이스" style="width: 300px; height: 200px;">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <h5><strong>좋아하는 선수&nbsp;:&nbsp;노바크 조코비치</strong></h5>
+                            </div>
+                        </div>
+                        <div class="row" >
+                            <h4><strong>게임</strong></h4>
+                            <div class="col-6" style="margin-bottom: 100px;">
+                                <div class="row text-center">
+                                    <img src="image2/spider-man-2.gif" alt="게임" style="width: 300px; height: 200px;">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <h5><strong>좋아하는 개임&nbsp;:&nbsp;스파이더맨2</strong></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright -->
+    <nav class="navbar navbar-expand-sm bg-light fixed-bottom mt-5">
+        <div class="container-fluid justify-content-center">
+            <span class="navbar-text">
+                Copyright & copy; 2021-2024 CK World Corp. All rights reserved.
+            </span>
+        </div>
+    </nav>
+    <!-- Modal 창 -->
+    <!-- Edit Profile 정보 수정 -->
+    <div class="modal" id="myModal02">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">내 정보 수정</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- <form action="#" method="get"> -->
+                    <div class="mt-2">
+                        <label class="me-3 mb-1">이메일</label>
+                        <input type="text" name="change_email" class="form-control" id="myChangedEmail">
+                    </div>
+                    <div class="mt-2">
+                        <label class="me-3 mb-1" id="myChangedGithubId">github 주소</label>
+                        <input type="text" name="change_github" class="form-control" id="myChangedGithub">
+                    </div>
+                    <div class="mt-2">
+                        <label class="me-3 mb-1" id="myChangedInstagramId">인스타그램</label>
+                        <input type="text" name="change_instagram" class="form-control" id="myChangedInsta">
+                    </div>
+                    <div class="mt-2">
+                        <label class="me-3 mb-1" id="myChangedLivingAddr">거주기</label>
+                        <input type="text" name="change_addr" class="form-control" id="myChangedAddr">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="mt-2 d-flex justify-content-end me-4">
+                        <button class="btn btn-primary" data-bs-dismiss="modal" id="editMyProfile">수정</button>
+                        <button class="btn btn-secondary ms-2" data-bs-dismiss="modal">취소</button>
+                    </div>
+                </div>
+                    <!-- </form> -->
+            </div>
+        </div>
+    </div> 
+</body>
+</html>
