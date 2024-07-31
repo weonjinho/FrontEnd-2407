@@ -18,6 +18,8 @@
         function myTime(now) {
             return `${twoDigit(now.getHours())}:${twoDigit(now.getMinutes())}:${twoDigit(now.getSeconds())}`; // Hours, Minutes, Seconds
         }
+
+        
         window.onload = () => {
             setInterval(() => {
                 let now = new Date();

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>클릭한 위치에 마커 표시하기</title>
+    <script src="key.js"></script>
+    <script>
+        window.onload= () => {
+            const kakaoScript = document.createElement('script');
+            kakaoScript.src = `http://dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoJsKey}&autoload=false`;
+            kakaoScript.onload = () => {
+                kakao.maps.load(async () => {     // async함수가 됨.
+                    let {place,roadAddr,lat,lon} = await getCoord('경기도청');
+                    document.getElementById('roadAddr').innerHTML = roadAddr;           // 도로명 주소 출력.
+                    document.getElementById('lat').innerHTML = String(lat.toFixed(6));  // 위도 출력.
+                    document.getElementById('lon').innerHTML = String(lon.toFixed(6));  // 경도 출력.
+                    drawMap(place,lat,lon);
+                }); 
+            };
+            document.head.appendChild(kakaoScript);
+        };
+
+        async function getCoord(place){    
+            try {
+                const roadBaseUrl = 'https://business.juso.go.kr/addrlink/addrLinkApi.do';
+                const kakaoBaseUrl = 'https://dapi.kakao.com/v2/local/search/address.json';
+                const params1 = 'currentPage=1&countPerPage=5';
+                const params2 = `keyword=${encodeURIComponent(place)}`;
+                const params3 = `confmKey=${roadAddrKey}&resultType=json`;
+                const roadUrl = `${roadBaseUrl}?${params1}&${params2}&${params3}`;
+
+                let response = await fetch(roadUrl);    
+                let result = await response.json();     
+                let roadAddr = result.results.juso[0].roadAddr;
+
+                let kakaoUrl = `${kakaoBaseUrl}?query=${encodeURIComponent(roadAddr)}`;
+                let header = { Authorization: `KakaoAK ${kakaoRestKey}` };
+                response = await fetch(kakaoUrl, { headers:header });
+                result = await response.json();
+                console.log(result);
+                let lat = parseFloat(result.documents[0].y);
+                let lon = parseFloat(result.documents[0].x);
+                return {place,roadAddr,lat,lon};     
+            } catch (error) {
+                console.log(error);
+                return {place, roadAddr:null, lat:null, lon:null};
+            }
+        }
+
+        function drawMap(place, lat,lon){
+            let container = document.getElementById('map'); 
+            let position = new kakao.maps.LatLng(lat, lon);
+            let options = {
+                center:position,    
+                level:4            
+            };
+            let map = new kakao.maps.Map(container, options);
+
+            let marker = new kakao.maps.Marker({    
+                map:map,            
+                position:position   
+            });
+
+            let infowindow = new kakao.maps.InfoWindow({
+                content:`<div style="padding:5px;">${place}</div>`
+            });
+
+        }
+
+
+    </script>
+</head>
+<body style="margin: 40px;">
+    <span id="roadAddr"></span>
+    <span id="lat"></span>
+    <span id="lon"></span>
+    <p><em>지도를 클릭해주세요!</em></p> 
+    <div id="clickLatlng"></div>
+    <div id="map" style="width:100%;height:350px;"></div>
+</body>
+</html>

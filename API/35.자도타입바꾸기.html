@@ -43,6 +43,7 @@
                 return {place, roadAddr:null, lat:null, lon:null};
             }
         }
+
         let map;
         function drawMap(place, lat,lon){
             let container = document.getElementById('map'); 
@@ -61,7 +62,7 @@
         }
 
 
-           // 지도에 추가된 지도타입정보를 가지고 있을 변수입니다
+        // 지도에 추가된 지도타입정보를 가지고 있을 변수입니다
         var currentTypeId;
 
         // 버튼이 클릭되면 호출되는 함수입니다
@@ -104,7 +105,7 @@
     </script>
 </head>
 <body>
-    <div id="map" style="width: 100%;height: 350px;"></div>
+    <div id="map" style="width: 70%;height: 350px;"></div>
     <div style="margin-top: 15px;">
         <button onclick="setOverlayMapTypeId('traffic')">교통정보 보기</button>
         <button onclick="setOverlayMapTypeId('roadview')">로드뷰 도로정보 보기</button>
