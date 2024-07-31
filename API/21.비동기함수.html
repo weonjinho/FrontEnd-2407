@@ -12,9 +12,9 @@
             kakaoScript.onload = () => {
                 kakao.maps.load(async () => {     // async함수가 됨.
                     let {place,roadAddr,lat,lon} = await getCoord('경기도청');
-                    document.getElementById('roadAddr').innerHTML = roadAddr;
-                    document.getElementById('lat').innerHTML = String(lat.toFixed(6));
-                    document.getElementById('lon').innerHTML = String(lon.toFixed(6));
+                    document.getElementById('roadAddr').innerHTML = roadAddr;           // 도로명 주소 출력.
+                    document.getElementById('lat').innerHTML = String(lat.toFixed(6));  // 위도 출력.
+                    document.getElementById('lon').innerHTML = String(lon.toFixed(6));  // 경도 출력.
                     drawMap(place,lat,lon);
                 }); 
             };
