@@ -26,7 +26,7 @@
                         .then(result => {
                             // console.log(result)
                             let roadAddr = result.results.juso[0].roadAddr;
-                            document.getElementById('place').innerHTML = roadAddr
+                            // document.getElementById('place').innerHTML = roadAddr;
 
                             let kakaoUrl = `${kakaoBaseUrl}?query=${encodeURIComponent(roadAddr)}`;
                             let header = {Authorization: `KakaoAK ${kakaoRestKey}`};
@@ -37,8 +37,8 @@
                                     console.log(result);
                                     let lat = parseFloat(result.documents[0].y);
                                     let lon = parseFloat(result.documents[0].x);
-                                    document.getElementById('lat').innerHTML = '' + lat;
-                                    document.getElementById('lon').innerHTML = String(lon)
+                                    // document.getElementById('lat').innerHTML = '' + lat;
+                                    // document.getElementById('lon').innerHTML = String(lon)
 
                                     drawMap(place, lat, lon);
                                 })
@@ -85,11 +85,14 @@
     <h1>도로명주소 API + 카카오로컬 API + 지도</h1>
     <hr>
     <h3>수원시청</h3>
-    <ul>
+    <!-- <ul>
         <li>도로명주소: <span id="place"></span></li>
         <li>위도: <span id="lat"></span></li>
         <li>경도: <span id="lon"></span></li>
-    </ul>
+    </ul> -->
+    <span id="place"></span>
+    <span id="lat"></span>
+    <span id="lon"></span>
     <div id="map" style="width:600px;height:400px; margin-top: 20px;"></div>
 </body>
 </html>
