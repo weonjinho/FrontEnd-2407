@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>닫기가 가능한 오버레이</title>
+    <style>
+        .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+        .wrap * {padding: 0;margin: 0;}
+        .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+        .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
+        .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+        .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
+        .info .close:hover {cursor: pointer;}
+        .info .body {position: relative;overflow: hidden;}
+        .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
+        .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+        .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
+        .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+        .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+        .info .link {color: #5085BB;}
+    </style>
+    <script src="key.js"></script>
+    <script>
+        window.onload = () =>{
+            const kakaoScript = document.createElement('script');
+            kakaoScript.src = `http://dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoJsKey}&autoload=false`;
+            kakaoScript.onload = () => {
+                kakao.maps.load(async ()=>{
+                    let {place, roadAddr, lat, lon} = await getCoord('경기도청');
+                    drawMap(place, lat, lon);
+                });
+            };
+            document.head.appendChild(kakaoScript);
+        };
+
+        async function getCoord(place){
+            try {
+                // kakao 지도 API Base 내용.
+                const kakaoBaseUrl = 'https://dapi.kakao.com/v2/local/search/address.json';
+                // 도로명 주소 API 조합
+                const roadBaseUrl = 'https://business.juso.go.kr/addrlink/addrLinkApi.do';
+                const params1 = 'currentPage=1&countPerPage=5';
+                const params2 = `keyword=${encodeURIComponent(place)}`;
+                const params3 = `confmKey=${roadAddrKey}&resultType=json`;
+                const roadUrl = `${roadBaseUrl}?${params1}&${params2}&${params3}`;
+                // fetch의 결과를 response로 받는다.
+                let response = await fetch(roadUrl);
+                // response로 받은 결과를 JSON형식으로 파싱한다.
+                let result = await response.json();
+                // 도로명 주소 가져오기.
+                let roadAddr = result.results.juso[0].roadAddr;
+
+                // kakao
+                let kakaoUrl = `${kakaoBaseUrl}?query=${encodeURIComponent(roadAddr)}`;
+                let header = {Authorization: `KakaoAK ${kakaoRestKey}`};
+                response = await fetch(kakaoUrl, {headers:header});
+                result = await response.json();
+                let lat = parseFloat(result.documents[0].y);
+                let lon = parseFloat(result.documents[0].x);
+                return {place,lat,lon};
+            } catch (error) {
+                console.log(error);
+                return {place, roadAddr:null, lat:null, lon:null};
+            }          
+        }
+
+        let overlay;
+        function drawMap(place, lat, lon){
+            let container = document.getElementById('map');
+            let position = new kakao.maps.LatLng(lat,lon);
+            let options = {
+                center:position,
+                level:4
+            };
+            let map = new kakao.maps.Map(container,options); // 여기까지 작성하면 지도는 나움.
+
+
+            let content = `<div class="wrap">`+
+                                `<div class="info">`+
+                                    `<div class="title">`+
+                                        `경기도청`+
+                                        `<div class="close" onclick="closeOverlay()" title="닫기"></div>`+
+                                    `</div>`+
+                                    `<div class="body">`+
+                                        `<div class="img">`+
+                                            `<img src="img/경기도청_02.png" width="73px" height="70px">`+
+                                        `</div>`+
+                                        `<div class="desc">`+
+                                            `<div class="ellipsis">경기 수원시 영통구 도청로 30</div>`+
+                                            `<div class="jibun ellipsis">(우) 16508(지번) 이의동</div>`+
+                                            `<div><a href="https://www.gg.go.kr/" target="_blank" class="link">경기도청</a></div>`+
+                                        `</div>`+
+                                    `</div>`+
+                                `</div>`+
+                          `</div>`;
+
+            // 마커 생성
+            let marker = new kakao.maps.Marker({
+                map:map,
+                position:position
+            });
+
+            overlay = new kakao.maps.CustomOverlay({
+                content:content,
+                map:null,   // 오버레이의 map 객체의 속성을 map이 아닌, null로 설정하면, 처음 실행했을때 오버레이가 안나온다.
+                position:marker.getPosition()
+            });
+
+            // kakao.maps.event.addListener(marker, 'mouseover', function(){
+            //     overlay.setMap(map);
+            // });
+
+            // kakao.maps.event.addListener(marker, 'mouseout', function(){
+            //     overlay.setMap(null);
+            // });        
+
+            // 마커 클릭하면 오버레이가 보이고.
+            kakao.maps.event.addListener(marker, 'click', function(){
+                overlay.setMap(map);
+            })
+        };
+        // 닫기를 클릭하면 오버레이가 사라진다.
+        // 이 기능을 구현시킬 조건: 
+        // 1. overlay 객체를 전역변수로 선언한다. 
+        // 2. closeOverlay()함수가 overlay변수를 참조하지 못하기 때문이다. 
+
+        // onclick()을 사용하면 해당 함수는 외부에서 접근할 수 있어야한다.
+        // 따라서 closeOverlay()함수는 drawMap()밖에 있어야한다.
+        function closeOverlay(){
+            overlay.setMap(null);
+        }
+    </script>
+</head>
+<body>
+    <h2>도로명주소 API + 카카오로컬 API + 지도</h2>
+    <hr>
+    <span id="place"></span>
+    <span id="lat"></span>
+    <span id="lon"></span>
+    <div id="map" style="width: 600px; height: 400px; margin-top: 20px;"></div>
+</body>
+</html>
